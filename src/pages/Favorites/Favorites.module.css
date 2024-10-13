@@ -1,0 +1,84 @@
+.container { 
+  width: 100%;
+  padding-left: 128px;
+  padding-right: 128px;
+  padding-top: 88px;
+  padding-bottom: 88px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.text {
+  margin-top: 200px;
+  padding: 12px;
+  border-radius: 12px;
+  display: block;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--default);
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.text.yellow {
+  color: var(--yellow);
+}
+.text.green {
+  color: var(--green);
+}
+
+.text.blue {
+  color: var(--blue);
+}
+
+.text.pink {
+  color: var(--pink);
+}
+
+.text.red {
+  color: var(--red);
+}
+
+.text:hover {
+  background-color: var(--default-accent);
+  color: var(--white);
+}
+
+.text.yellow:hover {
+  background-color: var(--yellow-accent);
+}
+.text.green:hover {
+  background-color: var(--green-accent);
+}
+
+.text.blue:hover {
+  background-color: var(--blue-accent);
+}
+
+.text.pink:hover {
+  background-color: var(--pink-accent);
+}
+
+.text.red:hover {
+  background-color: var(--red-accent);
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding-top: 68px;
+    padding-bottom: 68px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

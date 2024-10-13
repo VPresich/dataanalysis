@@ -1,0 +1,27 @@
+.experience {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--primary);
+}
+
+.descrWrapper {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 32px;
+  width: 95%;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--default);
+}
+
+@media screen and (max-width: 768px) {
+  .descrWrapper {
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+}

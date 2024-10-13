@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.reviewer {
+  width: 417px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.title {
+  height: 44px;
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.ratingWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}
+
+.iconStar {
+  fill: var(--star);
+}
+
+.raiting {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  color: var(--primary);
+}
+
+.letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.25;
+  background: var(--gray-bgr);
+  color: var(--default);
+}
+
+.letter.yellow {
+  color: var(--yellow);
+}
+.letter.green {
+  color: var(--green);
+}
+.letter.blue {
+  color: var(--blue);
+}
+.letter.pink {
+  color: var(--pink);
+}
+.letter.red {
+  color: var(--red);
+}
+
+.name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--default);
+}
+
+.comment {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--primary);
+}

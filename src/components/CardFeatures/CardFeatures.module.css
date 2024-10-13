@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  row-gap: 8px;
+}
+
+.feature {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.iconContainer {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.iconBook {
+  stroke: var(--primary);
+  fill: transparent;
+}
+
+.iconStar {
+  fill: var(--star);
+}
+
+.featureTitle,
+.featureValue {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.featureTitle {
+  margin-right: 4px;
+}
+
+.price {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--price);
+}
+@media screen and (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+  }
+}

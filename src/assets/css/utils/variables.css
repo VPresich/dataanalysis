@@ -1,0 +1,34 @@
+:root {
+  --primary: #121417;
+  --text: rgba(18, 20, 23, 0.8);
+
+  --price: #38cd3e;
+  --star: #ffc531;
+  --gray-bgr: #f8f8f8;
+
+  --white: #fff;
+
+  --default: #8a8a89;
+  --default-accent: #b0adad;
+
+  --yellow: #f4c550;
+  --yellow-accent: #fbe9ba;
+
+  --green: #9fbaae;
+  --green-accent: #cbded3;
+
+  --blue: #9fb7ce;
+  --blue-accent: #bfd6ea;
+
+  --pink: #e0a39a;
+  --pink-accent: #f2c0bd;
+
+  --red: #f0aa8d;
+  --red-accent: #f4c8ba;
+
+  --section-bgr: #eeeeee;
+
+  --font-family: "Roboto", sans-serif;
+
+  --max-width: 1440px;
+}

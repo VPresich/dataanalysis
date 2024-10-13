@@ -1,0 +1,68 @@
+@media screen and (max-width: 767px) {
+  .mobileContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 36px;
+  }
+  .nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 12px;
+  }
+
+  .item {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: var(--primary);
+    text-decoration: none;
+    font-style: normal;
+    transition: font-weight 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  }
+
+  .item.active,
+  .item:hover {
+    font-weight: 700;
+  }
+
+  .authPart {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    align-items: center;
+  }
+
+  .userName {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    background-color: transparent;
+    color: var(--primary);
+  }
+
+  .userName.yellow {
+    color: var(--yellow);
+  }
+
+  .userName.green {
+    color: var(--green);
+  }
+
+  .userName.blue {
+    color: var(--blue);
+  }
+
+  .userName.pink {
+    color: var(--pink);
+  }
+
+  .userName.red {
+    color: var(--red);
+  }
+}

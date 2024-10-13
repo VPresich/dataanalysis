@@ -1,0 +1,37 @@
+.btn {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition: fill 0.3s ease-in-out;
+}
+
+.default {
+  fill: transparent;
+  stroke: var(--primary);
+}
+
+.yellow {
+  fill: var(--yellow);
+  stroke: var(--yellow);
+}
+
+.green {
+  fill: var(--green);
+  stroke: var(--green);
+}
+
+.blue {
+  fill: var(--blue);
+  stroke: var(--blue);
+}
+
+.pink {
+  fill: var(--pink);
+  stroke: var(--pink);
+}
+
+.red {
+  fill: var(--red);
+  stroke: var(--red);
+}

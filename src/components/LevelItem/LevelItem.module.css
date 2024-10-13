@@ -1,0 +1,47 @@
+.container {
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  padding: 8px 12px;
+  background-color: transparent;
+  border: 1px solid rgba(18, 20, 23, 0.2);
+}
+
+.title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--primary);
+}
+
+.container.default {
+  border: none;
+  background-color: var(--default);
+}
+
+.container.yellow {
+  border: none;
+  background-color: var(--yellow);
+}
+
+.container.green {
+  border: none;
+  background-color: var(--green);
+}
+
+.container.blue {
+  border: none;
+  background-color: var(--blue);
+}
+
+.container.pink {
+  border: none;
+  background-color: var(--pink);
+}
+
+.container.red {
+  border: none;
+  background-color: var(--red);
+}

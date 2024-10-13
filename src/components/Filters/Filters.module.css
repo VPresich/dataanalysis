@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 12px;
+  justify-content: flex-start;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  color: var(--default);
+  background-color: transparent;
+}
+
+.btnPrice {
+  width: 124px;
+}
+
+.dropdownPrice {
+  width: 124px;
+}
+
+.label.yellow {
+  color: var(--yellow);
+}
+
+.label.green {
+  color: var(--green);
+}
+
+.label.blue {
+  color: var(--blue);
+}
+
+.label.pink {
+  color: var(--pink);
+}
+
+.label.red {
+  color: var(--red);
+}

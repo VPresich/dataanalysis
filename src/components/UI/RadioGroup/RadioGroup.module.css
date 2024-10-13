@@ -1,0 +1,79 @@
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.radioLabel {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.37;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+}
+
+.radioInput {
+  display: none;
+}
+
+.customRadio {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--default-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  background-color: transparent;
+}
+
+.radioInput:checked + .customRadio {
+  border-color: var(--default);
+}
+
+.radioInput:checked + .customRadio::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--default);
+}
+
+.radioInput.yellow:checked + .customRadio {
+  border-color: var(--yellow);
+}
+
+.radioInput.yellow:checked + .customRadio::after {
+  background-color: var(--yellow);
+}
+
+.radioInput.green:checked + .customRadio {
+  border-color: var(--green);
+}
+.radioInput.green:checked + .customRadio::after {
+  background-color: var(--green);
+}
+
+.radioInput.blue:checked + .customRadio {
+  border-color: var(--blue);
+}
+.radioInput.blue:checked + .customRadio::after {
+  background-color: var(--blue);
+}
+
+.radioInput.pink:checked + .customRadio {
+  border-color: var(--pink);
+}
+
+.radioInput.pink:checked + .customRadio::after {
+  background-color: var(--pink);
+}
+.radioInput.red:checked + .customRadio {
+  border-color: var(--red);
+}
+.radioInput.red:checked + .customRadio::after {
+  background-color: var(--red);
+}

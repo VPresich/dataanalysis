@@ -1,0 +1,151 @@
+.container {
+  width: 100%;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  gap: 48px;
+  position: relative;
+  background-color: var(--white);
+}
+
+.infoWrapper {
+  width: calc(100% - 92px);
+  display: flex;
+  flex-direction: column;
+}
+
+.favoriteContainer {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.nameWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 95%;
+}
+
+.firstLine {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 90px;
+  margin-bottom: 32px;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--default);
+}
+
+.name {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  color: var(--primary);
+}
+
+.languages {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.textContainer {
+  display: flex;
+  gap: 4px;
+}
+
+.descrWrapper {
+  display: flex;
+  gap: 4px;
+}
+
+.langWrapper {
+  display: flex;
+  gap: 4px;
+}
+
+.description {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--primary);
+  overflow: auto;
+}
+
+.readMore {
+  width: 82px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--primary);
+  cursor: pointer;
+  background-color: transparent;
+  margin-bottom: 32px;
+}
+
+.levelList {
+  width: 526px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+details {
+  transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.details.hidden {
+  opacity: 0;
+  max-height: 0;
+  pointer-events: none;
+}
+
+.details.visible {
+  opacity: 1;
+  max-height: 1000px;
+  margin-bottom: 32pxl;
+}
+
+.btnAuxStyles {
+  width: 232px;
+}
+
+@media screen and (max-width: 1240px) {
+  .firstLine {
+    padding-right: 0;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+  }
+
+  .descrWrapper {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,28 @@
+.authPart {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  align-items: center;
+}
+
+.userName {
+  font-family: "Roboto", sans-serif;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.btnsWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+@media screen and (max-width: 767px) {
+  .authPart {
+    display: none;
+  }
+}

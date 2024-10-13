@@ -1,0 +1,69 @@
+.container {
+  max-width: var(--max-width);
+  width: 100%;
+  padding-left: 128px;
+  padding-right: 128px;
+  padding-top: 88px;
+  padding-bottom: 88px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 50px;
+}
+
+.btnAuxStyles {
+  width: 200px;
+}
+
+.text {
+  display: block;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--primary);
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.text.yellow {
+  color: var(--yellow);
+}
+.text.green {
+  color: var(--green);
+}
+
+.text.blue {
+  color: var(--blue);
+}
+
+.text.pink {
+  color: var(--pink);
+}
+
+.text.red {
+  color: var(--red);
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding-top: 68px;
+    padding-bottom: 68px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

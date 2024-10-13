@@ -1,0 +1,29 @@
+{
+  "_id": "13",
+  "name": "Emily",
+  "surname": "Baker",
+  "languages": ["French"],
+  "levels": ["A1 Beginner", "A2 Elementary", "B1 Intermediate"],
+  "rating": 4.7,
+  "reviews": [
+    {
+      "reviewer_name": "Sophie",
+      "reviewer_rating": 5,
+      "comment": "Emily is an excellent French teacher. Her lessons are well-structured and informative."
+    },
+    {
+      "reviewer_name": "Noah",
+      "reviewer_rating": 4,
+      "comment": "I have learned a lot from Emily's lessons. Highly recommended for French learners."
+    }
+  ],
+  "price_per_hour": 30,
+  "lessons_done": 1310,
+  "avatar_url": "https://ftp.goit.study/img/avatars/20.jpg",
+  "lesson_info": "Lessons focus on improving language skills through conversation practice and cultural insights.",
+  "conditions": [
+    "Teaches adults and teenagers (16 years and above).",
+    "Flexible lesson packages available."
+  ],
+  "experience": "Emily has been teaching French for 7 years and has a passion for sharing the language and culture with her students. She has extensive experience in language instruction and is dedicated to creating well-structured and informative lessons. Emily's teaching style emphasizes practical conversation practice, cultural insights, and personalized instruction to help her students develop their French language skills with confidence."
+}

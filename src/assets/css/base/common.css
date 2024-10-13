@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--section-bgr);
+  color: var(--primary);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--default);
+  border-radius: 7px;
+  height: 120px;
+  min-height: 30px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: var(--default);
+  border-radius: 7px;
+  min-width: 30px;
+}
+
+::-webkit-scrollbar-thumb::before {
+  content: "";
+  display: block;
+  height: 100%;
+  min-height: 30px;
+  max-height: 100px;
+  background: #d9d9d9;
+  border-radius: 7px;
+}

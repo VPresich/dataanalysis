@@ -1,0 +1,48 @@
+.wrapper {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 16px 16px 18px;
+  height: 54px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.37;
+  color: var(--primary);
+  background-color: transparent;
+}
+
+.input:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+.error {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--yellow);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  color: var(--primary);
+  position: absolute;
+  transform: translate(-200%, 75%);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
+  box-shadow: 0 0 0 1000px transparent inset;
+  -webkit-text-fill-color: var(--primary);
+  transition: background-color 5000s ease-in-out 0s;
+}

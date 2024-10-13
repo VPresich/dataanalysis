@@ -1,0 +1,25 @@
+.nav {
+  display: flex;
+  column-gap: 12px;
+}
+
+.item {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--primary);
+  text-decoration: none;
+  font-style: normal;
+  transition: font-weight 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.item.active,
+.item:hover {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+  .nav {
+    display: none;
+  }
+}

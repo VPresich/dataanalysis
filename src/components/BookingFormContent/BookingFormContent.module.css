@@ -1,0 +1,101 @@
+.form {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.title {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+}
+
+.teacherWrapper {
+  display: flex;
+  gap: 14px;
+}
+
+.avatarWrapper {
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  overflow: hidden;
+}
+
+.imp {
+  border-radius: 50%;
+}
+
+.nameWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.tacherLabel {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--default);
+}
+
+.techerName {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--primary);
+}
+
+.question {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.text {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: rgba(18, 20, 23, 0.8);
+}
+
+.inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 18px;
+}
+
+.btnAuxStyles {
+  background-color: var(--yellow);
+}
+
+.btnAuxStyles:hover {
+  background-color: var(--yellow-accent);
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 36px;
+  }
+}
