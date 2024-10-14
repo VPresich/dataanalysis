@@ -14,7 +14,7 @@ export default function Logo() {
       ) : (
         <img src={logoIconUrl} alt="Logo icon" className={css.logoIcon} />
       )}
-      <span className={css.logoText}>LearnLingo</span>
+      <span className={css.logoText}>DataAnalysis</span>
     </div>
   );
 }

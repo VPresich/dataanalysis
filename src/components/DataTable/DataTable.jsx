@@ -5,6 +5,10 @@ import css from "./DataTable.module.css";
 
 const DataTable = ({ data }) => {
   const theme = useSelector(selectTheme);
+  if (!Array.isArray(data)) {
+    console.error("Expected data to be an array, but got:", data);
+    return <p>No data available</p>;
+  }
   return (
     <table className={css.table}>
       <thead>

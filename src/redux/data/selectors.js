@@ -1,4 +1,6 @@
-// import { createSelector } from "reselect";
+import { createSelector } from "reselect";
+import { selectTrackNum } from "../datafilters/selectors";
+import { selectImmConsistent } from "../datafilters/selectors";
 
 export const selectDataForAnalysis = (state) => state.analysis.items;
 export const selectDataForAnalysisLength = (state) =>
@@ -7,10 +9,32 @@ export const selectDataForAnalysisLength = (state) =>
 export const selectIsLoading = (state) => state.analysis.isLoading;
 export const selectError = (state) => state.analysis.error;
 
-// export const selectTeacherById = createSelector(
-//   [selectTeachers, (_, teacherId) => teacherId],
-//   (teachers, teacherId) => teachers.find((teacher) => teacher._id === teacherId)
-// );
+export const selectDataForTrack = createSelector(
+  [selectDataForAnalysis, selectTrackNum],
+  (data, trackNum) => {
+    if (!trackNum || trackNum === "All") {
+      return data;
+    }
+    return data.filter((row) => row.TrackNum === Number(trackNum));
+  }
+);
+
+export const selectDataForImmConsistent = createSelector(
+  [selectDataForTrack, selectImmConsistent],
+  (data, value) => {
+    console.log("value", value);
+    const normalizedValue = value ? value.toString().toLowerCase() : null;
+    console.log("normalizedValue", normalizedValue);
+
+    if (!normalizedValue || normalizedValue === "all") {
+      return data;
+    }
+
+    return data.filter(
+      (row) => row.IMMconsistent.toString().toLowerCase() === normalizedValue
+    );
+  }
+);
 
 // export const selectTeachersByLanguage = createSelector(
 //   [selectTeachers, (state, language) => language],

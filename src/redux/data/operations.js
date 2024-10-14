@@ -6,7 +6,6 @@ export const getAllData = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axiosInst.get(`data`);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

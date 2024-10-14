@@ -25,9 +25,7 @@ export default function App() {
 
     dispatch(getAllData())
       .unwrap()
-      .then((data) => {
-        console.log("DATA for analysis: ", data);
-      })
+      .then(() => {})
       .catch(() => {});
   }, [dispatch]);
 

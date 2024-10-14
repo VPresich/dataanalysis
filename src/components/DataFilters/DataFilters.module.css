@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 12px;
+  justify-content: flex-start;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  color: var(--default);
+  background-color: transparent;
+}
+
+.btnTrackNum {
+  width: 100px;
+}
+
+.dropdownTrackNum {
+  width: 100px;
+  max-height: 400px;
+  overflow-y: auto;
+}

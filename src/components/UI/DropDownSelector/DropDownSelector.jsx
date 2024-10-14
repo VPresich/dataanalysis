@@ -13,7 +13,6 @@ const DropDownSelector = ({
   btnCSSClass,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const handleOnChange = (event) => {
     onChange(event.target.value);
     setIsOpen(!isOpen);
@@ -38,29 +37,34 @@ const DropDownSelector = ({
       </button>
       {isOpen && (
         <div
-          className={clsx(css.dropdown, dropdownCSSClass && dropdownCSSClass)}
+          className={clsx(
+            css.dropdownWrapper,
+            dropdownCSSClass && dropdownCSSClass
+          )}
         >
-          {options.map((option, index) => (
-            <label
-              key={index}
-              className={clsx(
-                css.option,
-                {
-                  [css.selected]: selectedOption === option,
-                  [css.inactive]: selectedOption !== option,
-                },
-                optionCSSClass && optionCSSClass
-              )}
-            >
-              <input
-                type="radio"
-                value={option}
-                checked={selectedOption === option}
-                onChange={handleOnChange}
-              />
-              {option}
-            </label>
-          ))}
+          <div className={clsx(css.dropdown)}>
+            {options.map((option, index) => (
+              <label
+                key={index}
+                className={clsx(
+                  css.option,
+                  {
+                    [css.selected]: selectedOption === option,
+                    [css.inactive]: selectedOption !== option,
+                  },
+                  optionCSSClass && optionCSSClass
+                )}
+              >
+                <input
+                  type="radio"
+                  value={option}
+                  checked={selectedOption === option}
+                  onChange={handleOnChange}
+                />
+                {option}
+              </label>
+            ))}
+          </div>
         </div>
       )}
     </div>

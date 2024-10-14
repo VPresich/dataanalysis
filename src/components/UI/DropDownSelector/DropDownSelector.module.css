@@ -34,6 +34,7 @@
   align-items: center;
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
 }
 
 .icon {
@@ -48,25 +49,25 @@
   transition: transform 0.3s ease;
 }
 
-.dropdown {
+.dropdownWrapper {
   position: absolute;
   width: 221px;
   top: calc(100% + 4px);
   left: 0;
-
   padding-top: 14px;
   padding-bottom: 14px;
   padding-left: 18px;
   padding-right: 18px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
   border-radius: 12px;
   background-color: var(--white);
   box-shadow: 0 2px 8px var(--section-bgr);
+  z-index: 100;
+}
 
-  z-index: 10;
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .option {

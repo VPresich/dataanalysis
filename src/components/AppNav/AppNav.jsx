@@ -16,7 +16,7 @@ export default function AppNav() {
         Home
       </NavLink>
       <NavLink className={classItem} to="/teachers">
-        Teachers
+        Analysts
       </NavLink>
       <NavLink className={classItem} to="/data">
         Example Analysis

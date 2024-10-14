@@ -1,10 +1,16 @@
 import { useRef, useEffect, useCallback } from "react";
 import ReactDOM from "react-dom";
+import clsx from "clsx";
 
 import css from "./ModalWrapper.module.css";
 import iconsPath from "../../../assets/img/icons.svg";
 
-const ModalWrapper = ({ children, onClose, portalId = "portal-root" }) => {
+const ModalWrapper = ({
+  children,
+  onClose,
+  portalId = "portal-root",
+  isGraph = false,
+}) => {
   const wrapperRef = useRef(null);
 
   const handleClickOutside = useCallback(
@@ -36,17 +42,14 @@ const ModalWrapper = ({ children, onClose, portalId = "portal-root" }) => {
   return ReactDOM.createPortal(
     <div className={css.modalWrapper} onClick={handleClickOutside}>
       <div
-        className={css.modal}
+        className={clsx(css.modal, isGraph && css.graph)}
         ref={wrapperRef}
         onClick={(event) => {
           event.stopPropagation();
         }}
       >
         <button className={css.closeBtn} onClick={onClose}>
-          <svg
-            className={css.icon}           
-            aria-label="close button icon"
-          >
+          <svg className={css.icon} aria-label="close button icon">
             <use href={`${iconsPath}#icon-x-close`} />
           </svg>
         </button>

@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
-// import { selectQueryParams } from "../../redux/filters/selectors";
 import DataTable from "../../components/DataTable/DataTable";
-import Filters from "../../components/Filters/Filters";
+import DataFilters from "../../components/DataFilters/DataFilters";
+import ModalWrapper from "../../components/UI/ModalWrapper/ModalWrapper";
+import Button from "../../components/UI/Button/Button";
+import GraphComponent from "../../components/GraphComponent/GraphComponent";
+
 import {
-  selectDataForAnalysis,
   selectDataForAnalysisLength,
+  // selectDataForTrack,
+  selectDataForImmConsistent,
   selectIsLoading,
   selectError,
 } from "../../redux/data/selectors";
@@ -15,35 +19,56 @@ import DocumentTitle from "../../components/DocumentTitle";
 import css from "./ExampleAnalysis.module.css";
 
 export default function ExampleAnalysis() {
-  const dataForAnalysis = useSelector(selectDataForAnalysis);
+  const [showGraph, setShowGraph] = useState(false);
+
   const dataLength = useSelector(selectDataForAnalysisLength);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const dataForTrack = useSelector(selectDataForImmConsistent);
 
   const theme = useSelector(selectTheme);
 
-  //   const queryParams = useSelector(selectQueryParams);
+  const handleClick = () => {
+    setShowGraph(true);
+  };
+
+  const handleClose = () => {
+    setShowGraph(false);
+  };
 
   return (
     <React.Fragment>
       <DocumentTitle>Example Analysis</DocumentTitle>
       <section className={css.container}>
         <h2 className="visually-hidden">Example Analysis</h2>
-        <Filters />
+        <div className={css.auxLine}>
+          <DataFilters />
+          <Button btnAuxStyles={css.auxBtn} onClick={handleClick}>
+            Line graph
+          </Button>
+        </div>
         <div className={css.tableContainer}>
           {isLoading ? (
             <p>Loading...</p>
           ) : (
             <React.Fragment>
-              {!error && dataLength > 0 ? (
-                <DataTable data={dataForAnalysis} />
+              {!error && dataForTrack.length > 0 ? (
+                <DataTable data={dataForTrack} />
               ) : (
                 <p className={clsx(css.text, css[theme])}>Not found data.</p>
               )}
             </React.Fragment>
           )}
         </div>
+        <span>
+          Records: {dataForTrack.length} / {dataLength}
+        </span>
       </section>
+      {showGraph && (
+        <ModalWrapper onClose={handleClose} isGraph={true}>
+          <GraphComponent data={dataForTrack} />
+        </ModalWrapper>
+      )}
     </React.Fragment>
   );
 }

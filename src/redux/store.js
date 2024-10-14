@@ -5,6 +5,7 @@ import teachersReducer from "../redux/teachers/slice";
 import filtersReducer from "../redux/filters/slice";
 import favoritesReducer from "../redux/favorites/slice";
 import analysisReducer from "../redux/data/slice";
+import dataFiltersReducer from "../redux/datafilters/slice";
 
 import {
   persistStore,
@@ -30,6 +31,7 @@ const store = configureStore({
     filters: filtersReducer,
     favorites: favoritesReducer,
     analysis: analysisReducer,
+    datafilters: dataFiltersReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
