@@ -1,6 +1,10 @@
+import React, { useRef } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
-Chart.register(...registerables);
+import zoomPlugin from "chartjs-plugin-zoom";
+import Button from "../UI/Button/Button";
+import css from "./LineGraph.module.css";
+Chart.register(...registerables, zoomPlugin);
 
 const getPointColor = (immConsistent) => {
   if (immConsistent === "0") {
@@ -12,6 +16,8 @@ const getPointColor = (immConsistent) => {
 };
 
 const LineGraph = ({ data }) => {
+  const chartRef = useRef(null);
+
   if (!Array.isArray(data) || data.length === 0) {
     return <p>No data available to display.</p>;
   }
@@ -28,7 +34,7 @@ const LineGraph = ({ data }) => {
   const minYValue = Math.min(...yValues);
   const maxYValue = Math.max(...yValues);
 
-  const step = Math.ceil((maxXValue - minXValue) / 10);
+  const step = Math.ceil((maxXValue - minXValue) / 5);
 
   const chartData = {
     labels: data.map((row) => {
@@ -75,6 +81,18 @@ const LineGraph = ({ data }) => {
           },
         },
       },
+      zoom: {
+        pan: {
+          enabled: true,
+          mode: "xy",
+        },
+        zoom: {
+          enabled: true,
+          mode: "xy",
+          wheel: { enabled: true },
+          pinch: { enabled: true },
+        },
+      },
     },
     scales: {
       x: {
@@ -115,7 +133,23 @@ const LineGraph = ({ data }) => {
     },
   };
 
-  return <Line data={chartData} options={options} />;
+  const resetZoom = () => {
+    if (chartRef.current) {
+      chartRef.current.resetZoom();
+    }
+  };
+
+  return (
+    <React.Fragment>
+      <Button onClick={resetZoom}>Reset Zoom</Button>
+      <Line
+        className={css.container}
+        ref={chartRef}
+        data={chartData}
+        options={options}
+      />
+    </React.Fragment>
+  );
 };
 
 export default LineGraph;
