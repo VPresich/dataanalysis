@@ -1,32 +1,52 @@
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
-// import css from "./LineGraph.module.css";
+
+const getPointColor = (immConsistent) => {
+  if (immConsistent === "0") {
+    return "red";
+  } else if (immConsistent === "None") {
+    return "orange";
+  }
+  return "green";
+};
 
 const LineGraph = ({ data }) => {
   if (!Array.isArray(data) || data.length === 0) {
     return <p>No data available to display.</p>;
   }
+
+  const xValues = data
+    .map((row) => parseFloat(row.X))
+    .filter((value) => !isNaN(value));
+  const yValues = data
+    .map((row) => parseFloat(row.Y))
+    .filter((value) => !isNaN(value));
+
+  const minXValue = Math.min(...xValues);
+  const maxXValue = Math.max(...xValues);
+  const minYValue = Math.min(...yValues);
+  const maxYValue = Math.max(...yValues);
+
+  const step = Math.ceil((maxXValue - minXValue) / 10);
+
   const chartData = {
     labels: data.map((row) => {
-      const timeValue = parseFloat(row.X);
-      return timeValue.toFixed(2);
+      const xValue = parseFloat(row.X);
+      return !isNaN(xValue) ? xValue.toFixed(2) : "";
     }),
     datasets: [
       {
         label: "Dependence of Y on X",
-        data: data.map((row) => parseFloat(row.Y).toFixed(2)),
+        data: data.map((row) => {
+          const yValue = parseFloat(row.Y);
+          return !isNaN(yValue) ? yValue.toFixed(2) : null;
+        }),
         fill: false,
         borderColor: "rgba(75, 192, 192, 1)",
-        pointBackgroundColor: data.map((row) => {
-          if (row.IMMconsistent === "0") {
-            return "red";
-          } else if (row.IMMconsistent === "None") {
-            return "orange";
-          } else {
-            return "green";
-          }
-        }),
+        pointBackgroundColor: data.map((row) =>
+          getPointColor(row.IMMconsistent)
+        ),
         tension: 0.1,
       },
     ],
@@ -58,18 +78,21 @@ const LineGraph = ({ data }) => {
     },
     scales: {
       x: {
+        type: "linear",
         title: {
           display: true,
           text: "X, km",
         },
-        beginAtZero: true,
+        beginAtZero: false,
+        min: minXValue,
+        max: maxXValue,
         grid: {
           drawOnChartArea: true,
           zeroLineColor: "rgba(0, 0, 0, 0.5)",
           zeroLineWidth: 2,
         },
         ticks: {
-          beginAtZero: true,
+          stepSize: step,
         },
       },
       y: {
@@ -77,14 +100,16 @@ const LineGraph = ({ data }) => {
           display: true,
           text: "Y, km",
         },
-        beginAtZero: true,
+        beginAtZero: false,
+        min: minYValue,
+        max: maxYValue,
         grid: {
           drawOnChartArea: true,
           zeroLineColor: "rgba(0, 0, 0, 0.5)",
           zeroLineWidth: 2,
         },
         ticks: {
-          beginAtZero: true,
+          stepSize: step,
         },
       },
     },
