@@ -4,6 +4,13 @@
   column-gap: 20px;
   row-gap: 12px;
   justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.wrapper {
+  font-display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .label {
@@ -22,4 +29,13 @@
   width: 100px;
   max-height: 400px;
   overflow-y: auto;
+}
+
+.searchWrapper {
+  width: 150px;
+}
+
+.btnReset {
+  width: 120px;
+  height: 48px;
 }

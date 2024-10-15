@@ -25,7 +25,9 @@ export default function App() {
 
     dispatch(getAllData())
       .unwrap()
-      .then(() => {})
+      .then(() => {
+        // console.log(data);
+      })
       .catch(() => {});
   }, [dispatch]);
 

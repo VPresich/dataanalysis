@@ -6,11 +6,11 @@ import { selectTheme } from "../../redux/auth/selectors";
 import DocumentTitle from "../../components/DocumentTitle";
 import Button from "../../components/UI/Button/Button";
 import imgDefaultUrl from "../../assets/img/home/default_block.svg";
-import imgYellowUrl from "../../assets/img/home/yellow_block.svg";
-import imgGreenUrl from "../../assets/img/home/green_block.svg";
-import imgBlueUrl from "../../assets/img/home/blue_block.svg";
-import imgPinkUrl from "../../assets/img/home/pink_block.svg";
-import imgRedUrl from "../../assets/img/home/red_block.svg";
+import imgYellowUrl from "../../assets/img/home/yellow_analysis_block.webp";
+import imgGreenUrl from "../../assets/img/home/blue_analysis_block.webp";
+import imgBlueUrl from "../../assets/img/home/green_analysis_block.webp";
+import imgPinkUrl from "../../assets/img/home/pink_analysis_block.webp";
+import imgRedUrl from "../../assets/img/home/red_analysis_block.webp";
 import { refreshUser } from "../../redux/auth/operations";
 import { saveToken } from "../../redux/auth/slice";
 
@@ -86,11 +86,7 @@ export default function HomePage() {
             </Button>
           </div>
           <div className={css.imgContainer}>
-            <img
-              src={selectImgUrl(theme)}
-              alt="girl picture"
-              className={css.img}
-            />
+            <img src={selectImgUrl(theme)} alt="Picture" className={css.img} />
           </div>
         </section>
 

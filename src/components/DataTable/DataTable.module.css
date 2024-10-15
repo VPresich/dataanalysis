@@ -3,15 +3,46 @@
   border-collapse: collapse;
 }
 
-.th,
 .td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 4px;
+  height: 40px;
+}
+
+.th {
+  color: var(--white);
+  border: 1px solid #dddddd;
+  text-align: center;
 }
 
 .tr {
+  background-color: var(--default-accent);
+}
+
+.tr:hover {
   background-color: var(--default);
+  cursor: pointer;
+}
+
+.tr.red {
+  background-color: var(--red-accent);
+}
+
+.tr.green {
+  background-color: var(--green-accent);
+}
+
+.tr.blue {
+  background-color: var(--blue-accent);
+}
+
+.tr.pink {
+  background-color: var(--pink-accent);
+}
+
+.tr.yellow {
+  background-color: var(--yellow-accent);
 }
 
 .th.yellow {
@@ -34,8 +65,24 @@
   background-color: var(--red);
 }
 
-.tr:hover {
-  background-color: #f5f5f5;
+.tr.red:hover {
+  background-color: var(--red);
+}
+
+.tr.green:hover {
+  background-color: var(--green);
+}
+
+.tr.blue:hover {
+  background-color: var(--blue);
+}
+
+.tr.pink:hover {
+  background-color: var(--pink);
+}
+
+.tr.yellow:hover {
+  background-color: var(--yellow);
 }
 
 .tbody .tr:nth-child(even) {

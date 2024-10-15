@@ -16,6 +16,11 @@
   border: none;
   cursor: pointer;
   position: relative;
+  transition: border-color 500ms ease-in-out;
+}
+
+.btn:hover {
+  border-color: var(--default);
 }
 
 .btn .text {

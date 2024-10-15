@@ -7,16 +7,15 @@ const LineGraph = ({ data }) => {
   if (!Array.isArray(data) || data.length === 0) {
     return <p>No data available to display.</p>;
   }
-  console.log("data:", data);
   const chartData = {
     labels: data.map((row) => {
-      const timeValue = parseFloat(row.Time);
+      const timeValue = parseFloat(row.X);
       return timeValue.toFixed(2);
     }),
     datasets: [
       {
-        label: "Dependence of Azimuth on time",
-        data: data.map((row) => row.speed),
+        label: "Dependence of Y on X",
+        data: data.map((row) => parseFloat(row.Y).toFixed(2)),
         fill: false,
         borderColor: "rgba(75, 192, 192, 1)",
         pointBackgroundColor: data.map((row) => {
@@ -35,19 +34,58 @@ const LineGraph = ({ data }) => {
 
   const options = {
     responsive: true,
+    plugins: {
+      tooltip: {
+        callbacks: {
+          title: (tooltipItems) => {
+            const index = tooltipItems[0].dataIndex;
+            return `X: ${data[index].X}`;
+          },
+          label: (tooltipItem) => {
+            const index = tooltipItem.dataIndex;
+            return [
+              `Y: ${tooltipItem.raw}`,
+              `IMM Consistent: ${data[index].IMMconsistent}`,
+              `Speed: ${parseFloat(data[index].speed).toFixed(2)}`,
+              `Time: ${parseFloat(data[index].Time).toFixed(2)}`,
+              `IMM Consistent Value: ${parseFloat(
+                data[index].IMMconsistentValue
+              ).toFixed(2)}`,
+            ];
+          },
+        },
+      },
+    },
     scales: {
       x: {
         title: {
           display: true,
-          text: "Time, c",
+          text: "X, km",
+        },
+        beginAtZero: true,
+        grid: {
+          drawOnChartArea: true,
+          zeroLineColor: "rgba(0, 0, 0, 0.5)",
+          zeroLineWidth: 2,
+        },
+        ticks: {
+          beginAtZero: true,
         },
       },
       y: {
         title: {
           display: true,
-          text: "Azimuth. grad",
+          text: "Y, km",
         },
         beginAtZero: true,
+        grid: {
+          drawOnChartArea: true,
+          zeroLineColor: "rgba(0, 0, 0, 0.5)",
+          zeroLineWidth: 2,
+        },
+        ticks: {
+          beginAtZero: true,
+        },
       },
     },
   };

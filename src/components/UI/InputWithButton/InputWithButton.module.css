@@ -1,0 +1,82 @@
+.wrapper {
+  position: relative;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+}
+
+.input {
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 12px;
+  padding: 14px 30px 14px 14px;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+  background-color: var(--white);
+  transition: border-color 500ms ease-in-out;
+}
+
+.input:focus,
+.input:hover {
+  border-color: var(--green);
+}
+
+.input.error {
+  border-color: var(--error);
+}
+
+.error {
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.03em;
+  color: var(--error);
+}
+
+.searchButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-25%, 25%);
+  z-index: 200;
+}
+
+.icon {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: var(--default);
+  transition: stroke 300ms ease-in-out;
+}
+
+.icon:hover {
+  fill: transparent;
+  stroke: var(--green);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
+  box-shadow: 0 0 0 1000px transparent inset;
+  -webkit-text-fill-color: var(--primary);
+  transition: background-color 3000s ease-in-out;
+}

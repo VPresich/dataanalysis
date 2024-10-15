@@ -49,7 +49,10 @@ const ModalWrapper = ({
         }}
       >
         <button className={css.closeBtn} onClick={onClose}>
-          <svg className={css.icon} aria-label="close button icon">
+          <svg
+            className={clsx(css.icon, isGraph && css.graph)}
+            aria-label="close button icon"
+          >
             <use href={`${iconsPath}#icon-x-close`} />
           </svg>
         </button>

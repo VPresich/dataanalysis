@@ -24,13 +24,16 @@ const DataTable = ({ data }) => {
           <th className={clsx(css.th, css[theme])}>IMM Positive</th>
           <th className={clsx(css.th, css[theme])}>Velocity</th>
           <th className={clsx(css.th, css[theme])}>Speed</th>
+          <th className={clsx(css.th, css[theme])}>X</th>
+          <th className={clsx(css.th, css[theme])}>Y</th>
+          <th className={clsx(css.th, css[theme])}>Z</th>
           <th className={clsx(css.th, css[theme])}>Track</th>
           <th className={clsx(css.th, css[theme])}>Time</th>
         </tr>
       </thead>
       <tbody className={css.tbody}>
         {data.map((item) => (
-          <tr key={item._id} className={css.tr}>
+          <tr key={item._id} className={clsx(css.tr, css[theme])}>
             <td className={css.td}>{item.CVpositive}</td>
             <td className={css.td}>{item.CVstable}</td>
             <td className={css.td}>{item.CApositive}</td>
@@ -42,6 +45,9 @@ const DataTable = ({ data }) => {
             <td className={css.td}>{item.IMMpositive}</td>
             <td className={css.td}>{item.velocityOK}</td>
             <td className={css.td}>{item.speed}</td>
+            <td className={css.td}>{item.X}</td>
+            <td className={css.td}>{item.Y}</td>
+            <td className={css.td}>{item.Z}</td>
             <td className={css.td}>{item.TrackNum}</td>
             <td className={css.td}>{item.Time}</td>
           </tr>

@@ -5,3 +5,27 @@
   justify-content: center;
   align-items: center;
 }
+
+.triangle {
+  --triangle-color: var(--default);
+}
+
+.triangle.green {
+  --triangle-color: var(--green);
+}
+
+.triangle.yellow {
+  --triangle-color: var(--yellow);
+}
+
+.triangle.blue {
+  --triangle-color: var(--blue);
+}
+
+.triangle.red {
+  --triangle-color: var(--red);
+}
+
+.triangle.pink {
+  --triangle-color: var(--pink);
+}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import Loader from "../../components/UI/Loader/Loader";
 import clsx from "clsx";
 import DataTable from "../../components/DataTable/DataTable";
 import DataFilters from "../../components/DataFilters/DataFilters";
@@ -9,8 +10,7 @@ import GraphComponent from "../../components/GraphComponent/GraphComponent";
 
 import {
   selectDataForAnalysisLength,
-  // selectDataForTrack,
-  selectDataForImmConsistent,
+  selectFilteredData,
   selectIsLoading,
   selectError,
 } from "../../redux/data/selectors";
@@ -24,7 +24,7 @@ export default function ExampleAnalysis() {
   const dataLength = useSelector(selectDataForAnalysisLength);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const dataForTrack = useSelector(selectDataForImmConsistent);
+  const dataForTrack = useSelector(selectFilteredData);
 
   const theme = useSelector(selectTheme);
 
@@ -49,7 +49,7 @@ export default function ExampleAnalysis() {
         </div>
         <div className={css.tableContainer}>
           {isLoading ? (
-            <p>Loading...</p>
+            <Loader />
           ) : (
             <React.Fragment>
               {!error && dataForTrack.length > 0 ? (

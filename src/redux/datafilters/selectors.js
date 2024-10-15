@@ -5,3 +5,5 @@ export const selectTrackNumbers = (state) =>
 export const selectImmConsistent = (state) => state.datafilters.immConsistent;
 export const selectImmConsistentValues = (state) =>
   state.datafilters.immConsistentValues;
+export const selectImmConsistentMaxValue = (state) =>
+  state.datafilters.immConsistentMaxValue;
