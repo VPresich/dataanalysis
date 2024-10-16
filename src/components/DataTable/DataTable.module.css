@@ -12,6 +12,7 @@
 
 .th {
   color: var(--white);
+  background-color: var(--default);
   border: 1px solid #dddddd;
   text-align: center;
 }

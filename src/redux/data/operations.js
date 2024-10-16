@@ -12,3 +12,15 @@ export const getAllData = createAsyncThunk(
     }
   }
 );
+
+export const getDataByNumber = createAsyncThunk(
+  "data/getDataByNumber",
+  async (number, thunkAPI) => {
+    try {
+      const response = await axiosInst.get(`data/${number}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

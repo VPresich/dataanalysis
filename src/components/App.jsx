@@ -4,6 +4,7 @@ import { selectIsRefreshing } from "../redux/auth/selectors";
 import { refreshUser } from "../redux/auth/operations";
 import { resetRefreshState } from "../redux/auth/slice";
 import { getAllData } from "../redux/data/operations";
+import { updateTrackNumbers } from "../redux/datafilters/slice";
 import { Toaster } from "react-hot-toast";
 import AppBar from "./AppBar/AppBar";
 import AppRouter from "./AppRouter";
@@ -25,8 +26,20 @@ export default function App() {
 
     dispatch(getAllData())
       .unwrap()
-      .then(() => {
-        // console.log(data);
+      .then((data) => {
+        const groupedData = data.reduce((acc, row) => {
+          const trackNum = row.TrackNum;
+          if (!acc[trackNum]) {
+            acc[trackNum] = [];
+          }
+          acc[trackNum].push(row);
+          return acc;
+        }, {});
+
+        const filteredTracks = Object.keys(groupedData).filter(
+          (trackNum) => groupedData[trackNum].length >= 5
+        );
+        dispatch(updateTrackNumbers(filteredTracks));
       })
       .catch(() => {});
   }, [dispatch]);

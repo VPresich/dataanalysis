@@ -1,4 +1,5 @@
 export const selectTrackNum = (state) => state.datafilters.trackNum;
+export const selectSensorNum = (state) => state.datafilters.sensorNum;
 export const selectTrackNumbers = (state) =>
   state.datafilters.trackNumbers || [];
 
