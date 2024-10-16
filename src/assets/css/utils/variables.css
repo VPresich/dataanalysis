@@ -28,8 +28,42 @@
 
   --section-bgr: #eeeeee;
 
+  --blue: #3470ff;
+  --blue-accent: #255ee8;
+
   --font-family: "Roboto", sans-serif;
 
   --max-width: 1440px;
   --error: #ef2447;
+
+  --line1: rgba(75, 192, 192, 1);
+  --line2: rgba(174, 196, 75, 1);
+  --line3: rgba(182, 75, 196, 1);
+  --line4: rgba(192, 143, 75, 1);
+  --line5: rgba(75, 126, 196, 1);
+  --line6: rgba(196, 75, 93, 1);
+  --line7: rgba(231, 180, 172, 1);
+  --line8: rgba(1, 196, 75, 1);
+  --line9: rgba(196, 75, 150, 1);
+  --line10: rgba(34, 100, 53, 1);
+  --line11: rgba(75, 196, 111, 1);
+  --line12: rgba(182, 75, 196, 1);
+  --line13: rgba(75, 192, 192, 1);
+  --line14: rgb(255, 255, 75, 1);
+  --line15: rgb(182, 75, 196, 1);
+  --line16: rgba(255, 128, 0, 1);
+  --line17: rgb(174, 100, 75, 1);
+  --line18: rgb(75, 200, 196, 1);
+  --line19: rgba(255, 75, 192, 1);
+  --line20: rgb(174, 196, 255, 1);
+  --line21: rgb(100, 75, 196, 1);
+  --line22: rgb(174, 255, 100, 1);
+  --line23: rgb(182, 200, 75, 1);
+  --line24: rgba(255, 128, 146, 1);
+  --line25: rgba(182, 10, 10, 1);
+  --line26: rgba(10, 196, 75, 1);
+  --line27: rgba(1, 75, 196, 1);
+  --line28: rgba(174, 200, 148, 1);
+  --line29: rgba(182, 75, 147, 1);
+  --line30: rgba(196, 75, 146, 1);
 }

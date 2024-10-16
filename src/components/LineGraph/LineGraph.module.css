@@ -2,3 +2,8 @@
   width: 100%;
   height: auto;
 }
+
+.btnReset {
+  width: 145px;
+  height: 48px;
+}
