@@ -21,7 +21,7 @@
   font-size: 40px;
   line-height: 120%;
   letter-spacing: -0.02em;
-  color: #121417;
+  color: var(--primary);
 }
 
 .text {
@@ -39,11 +39,11 @@
 }
 
 .btnAuxStyles {
-  background-color: var(--yellow);
+  background-color: var(--green);
 }
 
 .btnAuxStyles:hover {
-  background-color: var(--yellow-accent);
+  background-color: var(--green-accent);
 }
 
 @media screen and (max-width: 768px) {
