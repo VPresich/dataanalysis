@@ -43,6 +43,7 @@ const LineGraph = ({ data }) => {
       if (trackData.length < 5) {
         return null;
       }
+      trackData.sort((a, b) => parseFloat(a.Time) - parseFloat(b.Time));
       const lineColor = getCSSVariableValue(`--line${index + 1}`).trim();
 
       return {
