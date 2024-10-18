@@ -62,7 +62,7 @@ export default function HomePage() {
   const theme = useSelector(selectTheme);
 
   const handleClick = () => {
-    navigate("/teachers");
+    navigate("/data");
   };
 
   return (
