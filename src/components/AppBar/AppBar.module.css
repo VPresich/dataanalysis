@@ -1,17 +1,30 @@
-.header {   
+.header {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
   padding-left: 128px;
   padding-right: 128px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   align-items: center;
   display: flex;
   justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  z-index: 100000;
+  transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    padding-top 1000ms cubic-bezier(0.4, 0, 0.2, 1),
+    padding-bottom 1000ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.onscroll {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .wrapper {

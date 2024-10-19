@@ -84,6 +84,7 @@ const LineGraph = ({ data }) => {
             const rowData = trackData[index];
             return [
               `Y: ${tooltipItem.raw.y}`,
+              `Z: ${parseFloat(rowData.Z).toFixed(2)}`,
               `IMM Consistent: ${rowData.IMMconsistent}`,
               `Speed: ${parseFloat(rowData.speed).toFixed(2)}`,
               `Time: ${parseFloat(rowData.Time).toFixed(2)}`,
