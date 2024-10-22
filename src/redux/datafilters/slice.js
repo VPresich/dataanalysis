@@ -10,7 +10,7 @@ const dataFiltersSlice = createSlice({
     immConsistent: "All",
     immConsistentValues: generateImmConsistentValues(),
     immConsistentMaxValue: "0.0",
-    sensorNum: 3,
+    sensorNum: 31,
   },
   reducers: {
     saveTrackNum: (state, action) => {

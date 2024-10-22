@@ -9,7 +9,7 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
-  z-index: 800;
+  z-index: 900;
 }
 
 .modal {
