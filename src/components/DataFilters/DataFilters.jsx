@@ -99,7 +99,7 @@ const DataFilters = () => {
         <p className={clsx(css.label, css[theme])}>Experiment N:</p>
         <DropDownSelector
           btnLabel={sensorNum}
-          options={[31, 32, 33, 34, 35, 81, 82, 83, 84]}
+          options={[31, 32, 33, 34, 35, 36, 81, 82, 83, 84]}
           selectedOption={sensorNum}
           onChange={handleSensorNum}
           btnCSSClass={css.btnTrackNum}
