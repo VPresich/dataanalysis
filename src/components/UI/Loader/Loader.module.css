@@ -10,6 +10,10 @@
   --triangle-color: var(--default);
 }
 
+.triangle.default {
+  --triangle-color: var(--default);
+}
+
 .triangle.green {
   --triangle-color: var(--green);
 }

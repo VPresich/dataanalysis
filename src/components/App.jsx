@@ -4,6 +4,7 @@ import { selectIsRefreshing } from "../redux/auth/selectors";
 import { refreshUser } from "../redux/auth/operations";
 import { resetRefreshState } from "../redux/auth/slice";
 import { getAllData } from "../redux/data/operations";
+import { selectIsLoading } from "../redux/data/selectors";
 import { updateTrackNumbers } from "../redux/datafilters/slice";
 import { Toaster } from "react-hot-toast";
 import AppBar from "./AppBar/AppBar";
@@ -14,6 +15,7 @@ import Loader from "./UI/Loader/Loader";
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(refreshUser())
@@ -46,7 +48,7 @@ export default function App() {
 
   return (
     <React.Fragment>
-      {isRefreshing ? (
+      {isRefreshing || isLoading ? (
         <Loader />
       ) : (
         <AppLayout>

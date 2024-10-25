@@ -1,8 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import clsx from "clsx";
+import Loader from "../../components/UI/Loader/Loader";
 import { selectTheme } from "../../redux/auth/selectors";
+import { selectIsLoading } from "../../redux/data/selectors";
+import { selectIsRefreshing } from "../../redux/auth/selectors";
 import DocumentTitle from "../../components/DocumentTitle";
 import Button from "../../components/UI/Button/Button";
 import imgDefaultUrl from "../../assets/img/home/default_block.svg";
@@ -48,6 +51,9 @@ export default function HomePage() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isLoading = useSelector(selectIsLoading);
+  const isRefreshing = useSelector(selectIsRefreshing);
+
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const token = queryParams.get("token");
@@ -66,51 +72,60 @@ export default function HomePage() {
   };
 
   return (
-    <>
+    <React.Fragment>
       <DocumentTitle>Home Page</DocumentTitle>
-      <div className={css.container}>
-        <section className={css.welcome}>
-          <div className={css.info}>
-            <h1 className={css.title}>
-              Unlock your potential with the best{" "}
-              <span className={clsx(css.accent, css[theme])}>data</span>{" "}
-              analysts.
-            </h1>
-            <p className={css.text}>
-              Embark on an Exciting Data Analysis Journey with Expert Data
-              Analysts: Elevate your data proficiency to new heights by
-              connecting with highly skilled and experienced data professionals.
-            </p>
-            <Button onClick={handleClick} btnAuxStyles={css.btnAuxStyles}>
-              Get started
-            </Button>
-          </div>
-          <div className={css.imgContainer}>
-            <img src={selectImgUrl(theme)} alt="Picture" className={css.img} />
-          </div>
-        </section>
+      {isRefreshing || isLoading ? (
+        <Loader />
+      ) : (
+        <div className={css.container}>
+          <section className={css.welcome}>
+            <div className={css.info}>
+              <h1 className={css.title}>
+                Unlock your potential with the best{" "}
+                <span className={clsx(css.accent, css[theme])}>data</span>{" "}
+                analysts.
+              </h1>
+              <p className={css.text}>
+                Embark on an Exciting Data Analysis Journey with Expert Data
+                Analysts: Elevate your data proficiency to new heights by
+                connecting with highly skilled and experienced data
+                professionals.
+              </p>
+              <Button onClick={handleClick} btnAuxStyles={css.btnAuxStyles}>
+                Get started
+              </Button>
+            </div>
+            <div className={css.imgContainer}>
+              <img
+                src={selectImgUrl(theme)}
+                alt="Picture"
+                className={css.img}
+              />
+            </div>
+          </section>
 
-        <section className={clsx(css.statistics, css[theme])}>
-          <ul className={css.statisticsList}>
-            <li className={css.statisticsItem}>
-              <p className={css.itemValue}>32,000 +</p>
-              <p className={css.itemTitle}>Experienced tutors</p>
-            </li>
-            <li className={css.statisticsItem}>
-              <p className={css.itemValue}>300,000 +</p>
-              <p className={css.itemTitle}>5-star tutor reviews</p>
-            </li>
-            <li className={css.statisticsItem}>
-              <p className={css.itemValue}>120 +</p>
-              <p className={css.itemTitle}>Subjects taught</p>
-            </li>
-            <li className={css.statisticsItem}>
-              <p className={css.itemValue}>200 +</p>
-              <p className={css.itemTitle}>Tutor nationalities</p>
-            </li>
-          </ul>
-        </section>
-      </div>
-    </>
+          <section className={clsx(css.statistics, css[theme])}>
+            <ul className={css.statisticsList}>
+              <li className={css.statisticsItem}>
+                <p className={css.itemValue}>32,000 +</p>
+                <p className={css.itemTitle}>Experienced tutors</p>
+              </li>
+              <li className={css.statisticsItem}>
+                <p className={css.itemValue}>300,000 +</p>
+                <p className={css.itemTitle}>5-star tutor reviews</p>
+              </li>
+              <li className={css.statisticsItem}>
+                <p className={css.itemValue}>120 +</p>
+                <p className={css.itemTitle}>Subjects taught</p>
+              </li>
+              <li className={css.statisticsItem}>
+                <p className={css.itemValue}>200 +</p>
+                <p className={css.itemTitle}>Tutor nationalities</p>
+              </li>
+            </ul>
+          </section>
+        </div>
+      )}
+    </React.Fragment>
   );
 }
