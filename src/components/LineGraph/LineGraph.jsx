@@ -86,11 +86,17 @@ const LineGraph = ({ data }) => {
               `Y: ${tooltipItem.raw.y}`,
               `Z: ${parseFloat(rowData.Z).toFixed(2)}`,
               `IMM Consistent: ${rowData.IMMconsistent}`,
-              `Speed: ${parseFloat(rowData.speed).toFixed(2)}`,
+              `Speed: ${
+                rowData.speed !== "None"
+                  ? parseFloat(rowData.speed).toFixed(2)
+                  : rowData.speed
+              }`,
               `Time: ${parseFloat(rowData.Time).toFixed(2)}`,
-              `IMM Consistent Value: ${parseFloat(
-                rowData.IMMconsistentValue
-              ).toFixed(2)}`,
+              `IMM Consistent Value: ${
+                rowData.IMMconsistentValue !== "None"
+                  ? parseFloat(rowData.IMMconsistentValue).toFixed(2)
+                  : rowData.IMMconsistentValue
+              }`,
             ];
           },
         },
