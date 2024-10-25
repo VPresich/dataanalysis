@@ -8,7 +8,7 @@ import { selectIsLoading } from "../../redux/data/selectors";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import DocumentTitle from "../../components/DocumentTitle";
 import Button from "../../components/UI/Button/Button";
-import imgDefaultUrl from "../../assets/img/home/default_block.svg";
+import imgDefaultUrl from "../../assets/img/home/default_block.webp";
 import imgYellowUrl from "../../assets/img/home/yellow_analysis_block.webp";
 import imgBlueUrl from "../../assets/img/home/blue_analysis_block.webp";
 import imgGreenUrl from "../../assets/img/home/green_analysis_block.webp";
