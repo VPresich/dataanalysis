@@ -27,6 +27,7 @@ const DataTable = ({ data }) => {
           <th className={clsx(css.th, css[theme])}>X</th>
           <th className={clsx(css.th, css[theme])}>Y</th>
           <th className={clsx(css.th, css[theme])}>Z</th>
+          <th className={clsx(css.th, css[theme])}>Probability</th>
           <th className={clsx(css.th, css[theme])}>Track</th>
           <th className={clsx(css.th, css[theme])}>Time</th>
         </tr>
@@ -48,6 +49,7 @@ const DataTable = ({ data }) => {
             <td className={css.td}>{item.X}</td>
             <td className={css.td}>{item.Y}</td>
             <td className={css.td}>{item.Z}</td>
+            <td className={css.td}>{item.probability}</td>
             <td className={css.td}>{item.TrackNum}</td>
             <td className={css.td}>{item.Time}</td>
           </tr>

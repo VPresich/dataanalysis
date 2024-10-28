@@ -100,7 +100,7 @@ const DataFilters = () => {
         <DropDownSelector
           btnLabel={sensorNum}
           options={[
-            31, 32, 33, 34, 35, 36, 37, 38, 81, 82, 83, 84, 85, 86, 87, 88,
+            31, 32, 33, 34, 35, 36, 37, 38, 51, 81, 82, 83, 84, 85, 86, 87, 88,
           ]}
           selectedOption={sensorNum}
           onChange={handleSensorNum}

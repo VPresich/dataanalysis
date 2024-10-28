@@ -85,6 +85,7 @@ const LineGraph = ({ data }) => {
             return [
               `Y: ${tooltipItem.raw.y}`,
               `Z: ${parseFloat(rowData.Z).toFixed(2)}`,
+              `Probability: ${parseFloat(rowData.probability).toFixed(5)}`,
               `IMM Consistent: ${rowData.IMMconsistent}`,
               `Speed: ${
                 rowData.speed !== "None"
