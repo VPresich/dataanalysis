@@ -20,7 +20,9 @@ import {
   selectEndTime,
 } from "../../redux/datafilters/selectors";
 import { selectTheme } from "../../redux/auth/selectors";
-import { getFilteredData } from "../../redux/data/operations";
+import {
+  /*getFilteredData,*/ getDataByNumber,
+} from "../../redux/data/operations";
 import { updateTrackNumbers, saveTime } from "../../redux/datafilters/slice";
 import DropDownSelector from "../UI/DropDownSelector/DropDownSelector";
 import SearchForm from "../UI/SearchForm/SearchForm";
@@ -45,7 +47,7 @@ const DataFilters = () => {
 
   const handleSensorNum = (sensorNum) => {
     dispatch(saveSensorNum(sensorNum));
-    dispatch(getFilteredData(sensorNum))
+    dispatch(getDataByNumber(sensorNum))
       .unwrap()
       .then((data) => {
         const filteredTracks = processData(data, 5);
@@ -64,7 +66,7 @@ const DataFilters = () => {
 
   const handleChangedTime = (value) => {
     dispatch(saveTime(value));
-    dispatch(getFilteredData(sensorNum))
+    dispatch(getDataByNumber(sensorNum))
       .unwrap()
       .then((data) => {
         const filteredTracks = processData(data, 5);
