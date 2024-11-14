@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
+import TimeForm from "../TimeForm/TimeForm";
+import processData from "../../auxiliary/processData";
 import clsx from "clsx";
 import {
   saveTrackNum,
@@ -14,10 +16,12 @@ import {
   selectImmConsistentValues,
   selectImmConsistentMaxValue,
   selectSensorNum,
+  selectStartTime,
+  selectEndTime,
 } from "../../redux/datafilters/selectors";
 import { selectTheme } from "../../redux/auth/selectors";
-import { getDataByNumber } from "../../redux/data/operations";
-import { updateTrackNumbers } from "../../redux/datafilters/slice";
+import { getFilteredData } from "../../redux/data/operations";
+import { updateTrackNumbers, saveTime } from "../../redux/datafilters/slice";
 import DropDownSelector from "../UI/DropDownSelector/DropDownSelector";
 import SearchForm from "../UI/SearchForm/SearchForm";
 import Button from "../UI/Button/Button";
@@ -31,6 +35,8 @@ const DataFilters = () => {
   const immConsistentValues = useSelector(selectImmConsistentValues);
   const immConsistent = useSelector(selectImmConsistent);
   const immConsistentMaxValue = useSelector(selectImmConsistentMaxValue);
+  const startTime = useSelector(selectStartTime);
+  const endTime = useSelector(selectEndTime);
   const dispatch = useDispatch();
 
   const handleTrackNum = (trackNum) => {
@@ -39,21 +45,10 @@ const DataFilters = () => {
 
   const handleSensorNum = (sensorNum) => {
     dispatch(saveSensorNum(sensorNum));
-    dispatch(getDataByNumber(sensorNum))
+    dispatch(getFilteredData(sensorNum))
       .unwrap()
       .then((data) => {
-        const groupedData = data.reduce((acc, row) => {
-          const trackNum = row.TrackNum;
-          if (!acc[trackNum]) {
-            acc[trackNum] = [];
-          }
-          acc[trackNum].push(row);
-          return acc;
-        }, {});
-
-        const filteredTracks = Object.keys(groupedData).filter(
-          (trackNum) => groupedData[trackNum].length >= 5
-        );
+        const filteredTracks = processData(data, 5);
         dispatch(updateTrackNumbers(filteredTracks));
       })
       .catch(() => {});
@@ -65,6 +60,17 @@ const DataFilters = () => {
 
   const handleSearch = (value) => {
     dispatch(saveImmConsistentMaxValue(value));
+  };
+
+  const handleChangedTime = (value) => {
+    dispatch(saveTime(value));
+    dispatch(getFilteredData(sensorNum))
+      .unwrap()
+      .then((data) => {
+        const filteredTracks = processData(data, 5);
+        dispatch(updateTrackNumbers(filteredTracks));
+      })
+      .catch(() => {});
   };
 
   const handleReset = () => {
@@ -100,7 +106,8 @@ const DataFilters = () => {
         <DropDownSelector
           btnLabel={sensorNum}
           options={[
-            31, 32, 33, 34, 35, 36, 37, 38, 51, 81, 82, 83, 84, 85, 86, 87, 88,
+            31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 51, 52, 53, 54, 55, 81, 82,
+            83, 84, 85, 86, 87, 88,
           ]}
           selectedOption={sensorNum}
           onChange={handleSensorNum}
@@ -114,6 +121,13 @@ const DataFilters = () => {
           onSearch={handleSearch}
           initValue={immConsistentMaxValue}
           placeholder="Input Value"
+        />
+      </div>
+      <div className={css.timeFormWrapper}>
+        <p className={clsx(css.label, css[theme])}>Time:</p>
+        <TimeForm
+          initialValues={{ startTime, endTime }}
+          onChange={handleChangedTime}
         />
       </div>
       <Button onClick={handleReset} btnAuxStyles={css.btnReset}>

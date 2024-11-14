@@ -42,25 +42,3 @@ export const selectFilteredData = createSelector(
     return data.filter((row) => row.IMMconsistentValue >= normalizedValue);
   }
 );
-
-// export const selectTeachersByLevel = createSelector(
-//   [selectTeachers, (state, level) => level],
-//   (teachers, level) => {
-//     if (level === "" || level === "all") return teachers;
-
-//     return teachers.filter((teacher) =>
-//       teacher.languages.some((lev) =>
-//         lev.toLowerCase().includes(level.toLowerCase())
-//       )
-//     );
-//   }
-// );
-
-// export const selectTeachersByPrice = createSelector(
-//   [selectTeachers, (state, price) => price],
-//   (teachers, price) => {
-//     const pricePerHour = parseFloat(price);
-//     if (isNaN(pricePerHour)) return teachers;
-//     return teachers.filter((teacher) => teacher.price_per_hour <= pricePerHour);
-//   }
-// );

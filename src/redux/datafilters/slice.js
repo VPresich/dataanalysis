@@ -11,6 +11,8 @@ const dataFiltersSlice = createSlice({
     immConsistentValues: generateImmConsistentValues(),
     immConsistentMaxValue: "0.0",
     sensorNum: 31,
+    startTime: "",
+    endTime: "",
   },
   reducers: {
     saveTrackNum: (state, action) => {
@@ -34,11 +36,18 @@ const dataFiltersSlice = createSlice({
       state.trackNumbers.push("All");
     },
 
+    saveTime: (state, action) => {
+      state.startTime = action.payload.startTime;
+      state.endTime = action.payload.endTime;
+    },
+
     resetDataFilters: (state) => {
       state.trackNum = "All";
       state.immConsistent = "All";
-      state.sensorNum = 3;
+      state.sensorNum = 31;
       state.immConsistentMaxValue = "0.0";
+      state.startTime = "";
+      state.endTime = "";
     },
   },
 });
@@ -49,6 +58,7 @@ export const {
   saveImmConsistent,
   saveImmConsistentMaxValue,
   updateTrackNumbers,
+  saveTime,
   resetDataFilters,
 } = dataFiltersSlice.actions;
 export default dataFiltersSlice.reducer;

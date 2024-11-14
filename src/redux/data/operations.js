@@ -24,3 +24,18 @@ export const getDataByNumber = createAsyncThunk(
     }
   }
 );
+
+export const getFilteredData = createAsyncThunk(
+  "data/getFilteredData",
+  async ({ number, startTime, endTime }, thunkAPI) => {
+    try {
+      const params = {};
+      if (startTime) params.startTime = startTime;
+      if (endTime) params.endTime = endTime;
+      const response = await axiosInst.get(`data/${number}`, { params });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

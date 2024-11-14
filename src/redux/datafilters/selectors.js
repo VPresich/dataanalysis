@@ -8,3 +8,6 @@ export const selectImmConsistentValues = (state) =>
   state.datafilters.immConsistentValues;
 export const selectImmConsistentMaxValue = (state) =>
   state.datafilters.immConsistentMaxValue;
+
+export const selectStartTime = (state) => state.datafilters.startTime;
+export const selectEndTime = (state) => state.datafilters.endTime;
