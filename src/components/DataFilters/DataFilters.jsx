@@ -3,37 +3,46 @@ import TimeForm from "../TimeForm/TimeForm";
 import processData from "../../auxiliary/processData";
 import clsx from "clsx";
 import {
-  saveTrackNum,
+  // saveTrackNum,
   saveSensorNum,
   saveImmConsistent,
   saveImmConsistentMaxValue,
+  saveSelectedTrackNums,
   resetDataFilters,
 } from "../../redux/datafilters/slice";
 import {
-  selectTrackNum,
-  selectTrackNumbers,
+  // selectTrackNum,
+  // selectTrackNumbers,
+  selectTrackNumbersForMultySelect,
   selectImmConsistent,
   selectImmConsistentValues,
   selectImmConsistentMaxValue,
   selectSensorNum,
   selectStartTime,
   selectEndTime,
+  selectSelectedTrackNums,
 } from "../../redux/datafilters/selectors";
 import { selectTheme } from "../../redux/auth/selectors";
 import {
-  /*getFilteredData,*/ getDataByNumber,
+  getFilteredData /*, getDataByNumber*/,
 } from "../../redux/data/operations";
 import { updateTrackNumbers, saveTime } from "../../redux/datafilters/slice";
 import DropDownSelector from "../UI/DropDownSelector/DropDownSelector";
+import MultySelector from "../UI/MultySelector/MultySelector";
 import SearchForm from "../UI/SearchForm/SearchForm";
 import Button from "../UI/Button/Button";
 import css from "./DataFilters.module.css";
 
 const DataFilters = () => {
   const theme = useSelector(selectTheme);
-  const trackNum = useSelector(selectTrackNum);
+  // const trackNum = useSelector(selectTrackNum);
+  const selectedTrackNums = useSelector(selectSelectedTrackNums);
   const sensorNum = useSelector(selectSensorNum);
-  const trackNumbers = useSelector(selectTrackNumbers);
+  // const trackNumbers = useSelector(selectTrackNumbers);
+  const trackNumbersForMultySelect = useSelector(
+    selectTrackNumbersForMultySelect
+  );
+  console.log("trackNumbersForMultySelect", trackNumbersForMultySelect);
   const immConsistentValues = useSelector(selectImmConsistentValues);
   const immConsistent = useSelector(selectImmConsistent);
   const immConsistentMaxValue = useSelector(selectImmConsistentMaxValue);
@@ -41,13 +50,13 @@ const DataFilters = () => {
   const endTime = useSelector(selectEndTime);
   const dispatch = useDispatch();
 
-  const handleTrackNum = (trackNum) => {
-    dispatch(saveTrackNum(trackNum));
-  };
+  // const handleTrackNum = (trackNum) => {
+  //   dispatch(saveTrackNum(trackNum));
+  // };
 
   const handleSensorNum = (sensorNum) => {
     dispatch(saveSensorNum(sensorNum));
-    dispatch(getDataByNumber(sensorNum))
+    dispatch(getFilteredData({ sensorNum, startTime, endTime }))
       .unwrap()
       .then((data) => {
         const filteredTracks = processData(data, 5);
@@ -66,7 +75,13 @@ const DataFilters = () => {
 
   const handleChangedTime = (value) => {
     dispatch(saveTime(value));
-    dispatch(getDataByNumber(sensorNum))
+    dispatch(
+      getFilteredData({
+        sensorNum,
+        startTime: value.startTime,
+        endTime: value.endTime,
+      })
+    )
       .unwrap()
       .then((data) => {
         const filteredTracks = processData(data, 5);
@@ -77,11 +92,18 @@ const DataFilters = () => {
 
   const handleReset = () => {
     dispatch(resetDataFilters());
+    setTimeout(() => {
+      handleSensorNum(31);
+    }, 0);
+  };
+
+  const handleSelectionChange = (options) => {
+    dispatch(saveSelectedTrackNums(options));
   };
 
   return (
     <div className={css.container}>
-      <div className={css.wrapper}>
+      {/* <div className={css.wrapper}>
         <p className={clsx(css.label, css[theme])}>Track Number:</p>
         <DropDownSelector
           btnLabel={trackNum}
@@ -90,6 +112,16 @@ const DataFilters = () => {
           onChange={handleTrackNum}
           btnCSSClass={css.btnTrackNum}
           dropdownCSSClass={css.dropdownTrackNum}
+        />
+      </div> */}
+      <div className={css.wrapper}>
+        <p className={clsx(css.label, css[theme])}>Track numbers:</p>
+        <MultySelector
+          btnLabel="Select  "
+          options={trackNumbersForMultySelect}
+          selectedOptions={selectedTrackNums}
+          onChange={handleSelectionChange}
+          dropdownCSSClass={css.dropdownMultyTrackNum}
         />
       </div>
       <div className={css.wrapper}>
@@ -108,8 +140,8 @@ const DataFilters = () => {
         <DropDownSelector
           btnLabel={sensorNum}
           options={[
-            31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 51, 52, 53, 54, 55, 81, 82,
-            83, 84, 85, 86, 87, 88,
+            31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 51, 52, 53, 54, 55, 56, 81,
+            82, 83, 84, 85, 86, 87, 88,
           ]}
           selectedOption={sensorNum}
           onChange={handleSensorNum}

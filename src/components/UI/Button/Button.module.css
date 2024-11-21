@@ -61,3 +61,12 @@
 .btn.red:hover {
   background-color: var(--red-accent);
 }
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:disabled.hover {
+  opacity: 0.3;
+}

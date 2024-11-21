@@ -1,0 +1,153 @@
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.btn {
+  border-radius: 14px;
+  width: 160px;
+  height: 50px;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 500ms ease-in-out;
+}
+
+.btn:hover {
+  border-color: var(--default);
+}
+
+.btn .text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  stroke: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.btn.open .icon {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.dropdownWrapper {
+  position: absolute;
+  width: 100%;
+  top: calc(100% + 4px);
+  left: 0;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-radius: 12px;
+  background-color: var(--white);
+  box-shadow: 0 2px 8px var(--section-bgr);
+  z-index: 1001;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  gap: 4px;
+}
+
+.option.selected {
+  color: var(--primary);
+}
+
+.option.inactive {
+  color: rgba(18, 20, 23, 0.2);
+}
+
+.option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.customCheckbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  background-color: transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.customCheckbox svg {
+  display: none;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease;
+}
+
+.option.selected .customCheckbox svg {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  fill: var(--primary);
+}
+
+.checkIcon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: rgba(18, 20, 23, 0.2);
+}
+
+.option.selected .checkIcon {
+  fill: var(--primary);
+  stroke: var(--primary);
+}
+
+.option input:not(:checked) + .customCheckbox .checkIcon {
+  stroke: rgba(18, 20, 23, 0.2);
+  fill: rgba(18, 20, 23, 0.2);
+}
+
+.btnAuxStyles {
+  height: 50px;
+}

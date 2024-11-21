@@ -6,6 +6,7 @@ const dataFiltersSlice = createSlice({
   name: "datafilters",
   initialState: {
     trackNum: "All",
+    selectedTrackNums: generateTrackNumbers(29),
     trackNumbers: generateTrackNumbers(29),
     immConsistent: "All",
     immConsistentValues: generateImmConsistentValues(),
@@ -17,6 +18,10 @@ const dataFiltersSlice = createSlice({
   reducers: {
     saveTrackNum: (state, action) => {
       state.trackNum = action.payload;
+    },
+
+    saveSelectedTrackNums: (state, action) => {
+      state.selectedTrackNums = action.payload;
     },
 
     saveSensorNum: (state, action) => {
@@ -32,6 +37,7 @@ const dataFiltersSlice = createSlice({
     },
 
     updateTrackNumbers: (state, action) => {
+      state.selectedTrackNums = [...action.payload];
       state.trackNumbers = action.payload;
       state.trackNumbers.push("All");
     },
@@ -54,6 +60,7 @@ const dataFiltersSlice = createSlice({
 
 export const {
   saveTrackNum,
+  saveSelectedTrackNums,
   saveSensorNum,
   saveImmConsistent,
   saveImmConsistentMaxValue,

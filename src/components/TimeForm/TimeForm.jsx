@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { feedbackSchema } from "./feedbackSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,7 +14,11 @@ const TimeForm = ({ initialValues, onChange }) => {
       endTime: "",
     },
   });
-  const { handleSubmit, control } = methods;
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty },
+  } = methods;
 
   const onSubmit = (data) => {
     console.log("data:", data);
@@ -21,6 +26,10 @@ const TimeForm = ({ initialValues, onChange }) => {
       onChange(data);
     }
   };
+
+  useEffect(() => {
+    methods.reset(initialValues);
+  }, [initialValues, methods]);
 
   return (
     <FormProvider {...methods}>
@@ -41,7 +50,11 @@ const TimeForm = ({ initialValues, onChange }) => {
             )}
           />
         </div>
-        <Button type="submit" btnAuxStyles={css.btnAuxStyles}>
+        <Button
+          type="submit"
+          btnAuxStyles={css.btnAuxStyles}
+          disabled={!isDirty}
+        >
           Save time
         </Button>
       </form>

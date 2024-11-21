@@ -1,5 +1,7 @@
 import { createSelector } from "reselect";
 import { selectTrackNum } from "../datafilters/selectors";
+import { selectSelectedTrackNums } from "../datafilters/selectors";
+
 import { selectImmConsistent } from "../datafilters/selectors";
 import { selectImmConsistentMaxValue } from "../datafilters/selectors";
 
@@ -19,8 +21,18 @@ export const selectDataForTrack = createSelector(
   }
 );
 
+export const selectDataForTracks = createSelector(
+  [selectDataForAnalysis, selectSelectedTrackNums],
+  (data, trackNums) => {
+    const trackNumsAsNumbers = trackNums.map(Number);
+    return data.filter((row) =>
+      trackNumsAsNumbers.includes(Number(row.TrackNum))
+    );
+  }
+);
+
 export const selectDataForImmConsistent = createSelector(
-  [selectDataForTrack, selectImmConsistent],
+  [selectDataForTracks, selectImmConsistent],
   (data, value) => {
     const normalizedValue = value ? value.toString().toLowerCase() : null;
     if (!normalizedValue || normalizedValue === "all") {

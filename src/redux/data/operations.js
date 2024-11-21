@@ -15,9 +15,9 @@ export const getAllData = createAsyncThunk(
 
 export const getDataByNumber = createAsyncThunk(
   "data/getDataByNumber",
-  async (number, thunkAPI) => {
+  async (sensorNum, thunkAPI) => {
     try {
-      const response = await axiosInst.get(`data/${number}`);
+      const response = await axiosInst.get(`data/${sensorNum}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -27,12 +27,12 @@ export const getDataByNumber = createAsyncThunk(
 
 export const getFilteredData = createAsyncThunk(
   "data/getFilteredData",
-  async ({ number, startTime, endTime }, thunkAPI) => {
+  async ({ sensorNum, startTime, endTime }, thunkAPI) => {
     try {
       const params = {};
       if (startTime) params.startTime = startTime;
       if (endTime) params.endTime = endTime;
-      const response = await axiosInst.get(`data/${number}`, { params });
+      const response = await axiosInst.get(`data/${sensorNum}`, { params });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
