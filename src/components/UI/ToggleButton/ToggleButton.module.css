@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.hiddenCheckbox {
+  display: none;
+}
+
+.customCheckbox {
+  width: 24px;
+  height: 24px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  background-color: var(--white);
+}
+
+.hiddenCheckbox:hover + .customCheckbox {
+  box-shadow: 0 0 3px var(--default-accent);
+}
+
+.checkIcon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  transition: fill 0.3s, border-color 0.3s;
+}
+
+.hiddenCheckbox:checked + .customCheckbox .checkIcon {
+  fill: var(--primary);
+}

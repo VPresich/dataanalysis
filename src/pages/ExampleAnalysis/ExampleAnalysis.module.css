@@ -28,11 +28,11 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 24px;
 }
 
 .auxBtn {
-  width: 128px;
+  height: 50px;
+  width: 124px;
 }
 
 @media screen and (max-width: 1024px) {

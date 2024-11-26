@@ -6,9 +6,9 @@
 }
 
 .inputs {
-  width: calc(100% - 122px);
+  width: calc(100% - 120px);
   display: flex;
-  gap: 8px;
+  gap: 4px;
 }
 
 .btnAuxStyles {

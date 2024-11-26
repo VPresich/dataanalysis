@@ -1,19 +1,11 @@
 import React, { useRef } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
+import { getPointColor } from "../../auxiliary/getPointColor";
 import zoomPlugin from "chartjs-plugin-zoom";
 import Button from "../UI/Button/Button";
 import css from "./LineGraph.module.css";
 Chart.register(...registerables, zoomPlugin);
-
-const getPointColor = (immConsistent) => {
-  if (immConsistent === "0") {
-    return "#ef2447";
-  } else if (immConsistent === "None") {
-    return "orange";
-  }
-  return "green";
-};
 
 const getCSSVariableValue = (variableName) => {
   return getComputedStyle(document.documentElement).getPropertyValue(

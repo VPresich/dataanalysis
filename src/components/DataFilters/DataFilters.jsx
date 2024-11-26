@@ -9,6 +9,7 @@ import {
   saveImmConsistentMaxValue,
   saveSelectedTrackNums,
   resetDataFilters,
+  setIs3D,
 } from "../../redux/datafilters/slice";
 import {
   // selectTrackNum,
@@ -21,6 +22,7 @@ import {
   selectStartTime,
   selectEndTime,
   selectSelectedTrackNums,
+  selectIs3D,
 } from "../../redux/datafilters/selectors";
 import { selectTheme } from "../../redux/auth/selectors";
 import {
@@ -31,6 +33,7 @@ import DropDownSelector from "../UI/DropDownSelector/DropDownSelector";
 import MultySelector from "../UI/MultySelector/MultySelector";
 import SearchForm from "../UI/SearchForm/SearchForm";
 import Button from "../UI/Button/Button";
+import ToggleButton from "../UI/ToggleButton/ToggleButton";
 import css from "./DataFilters.module.css";
 
 const DataFilters = () => {
@@ -42,12 +45,12 @@ const DataFilters = () => {
   const trackNumbersForMultySelect = useSelector(
     selectTrackNumbersForMultySelect
   );
-  console.log("trackNumbersForMultySelect", trackNumbersForMultySelect);
   const immConsistentValues = useSelector(selectImmConsistentValues);
   const immConsistent = useSelector(selectImmConsistent);
   const immConsistentMaxValue = useSelector(selectImmConsistentMaxValue);
   const startTime = useSelector(selectStartTime);
   const endTime = useSelector(selectEndTime);
+  const is3D = useSelector(selectIs3D);
   const dispatch = useDispatch();
 
   // const handleTrackNum = (trackNum) => {
@@ -99,6 +102,10 @@ const DataFilters = () => {
 
   const handleSelectionChange = (options) => {
     dispatch(saveSelectedTrackNums(options));
+  };
+
+  const handleToggle = () => {
+    dispatch(setIs3D(!is3D));
   };
 
   return (
@@ -167,6 +174,9 @@ const DataFilters = () => {
       <Button onClick={handleReset} btnAuxStyles={css.btnReset}>
         Reset
       </Button>
+      <div className={css.wrapper}>
+        <ToggleButton is3D={is3D} onToggle={handleToggle} />
+      </div>
     </div>
   );
 };

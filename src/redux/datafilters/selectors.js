@@ -16,3 +16,5 @@ export const selectStartTime = (state) => state.datafilters.startTime;
 export const selectEndTime = (state) => state.datafilters.endTime;
 export const selectSelectedTrackNums = (state) =>
   state.datafilters.selectedTrackNums;
+
+export const selectIs3D = (state) => state.datafilters.is3D;
