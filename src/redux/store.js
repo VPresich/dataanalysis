@@ -3,6 +3,7 @@ import storage from "redux-persist/lib/storage";
 import authReducer from "../redux/auth/slice";
 import analysisReducer from "../redux/data/slice";
 import dataFiltersReducer from "../redux/datafilters/slice";
+import houghReducer from "../redux/houghdata/slice";
 
 import {
   persistStore,
@@ -26,6 +27,7 @@ const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     analysis: analysisReducer,
     datafilters: dataFiltersReducer,
+    hough: houghReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

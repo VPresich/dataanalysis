@@ -6,6 +6,9 @@ const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const DataAnalysis = lazy(() =>
   import("../pages/ExampleAnalysis/ExampleAnalysis")
 );
+const HoughTransform = lazy(() =>
+  import("../pages/HoughTransform/HoughTransform")
+);
 // const Favorites = lazy(() => import("../pages/Favorites/Favorites"));
 import Loader from "../components/UI/Loader/Loader";
 // import PrivateRoute from "./PrivateRoute";
@@ -17,6 +20,7 @@ function AppRouter() {
         <Route path="/" element={<HomePage />} />
         {/* <Route path="/teachers" element={<Teachers />} /> */}
         <Route path="/data" element={<DataAnalysis />} />
+        <Route path="/hough" element={<HoughTransform />} />
         {/* <Route
           path="/favorites"
           element={<PrivateRoute redirectTo="/" component={<Favorites />} />}

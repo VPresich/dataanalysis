@@ -1,0 +1,11 @@
+.btnReset {
+  width: 145px;
+  height: 48px;
+}
+
+.headLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+}

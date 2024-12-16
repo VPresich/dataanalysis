@@ -21,6 +21,9 @@ export default function AppNav() {
       <NavLink className={classItem} to="/data">
         Example Analysis
       </NavLink>
+      <NavLink className={classItem} to="/hough">
+        Hough Transform
+      </NavLink>
       {/* {isLoggedIn && (
         <NavLink className={classItem} to="/favorites">
           Favorites
