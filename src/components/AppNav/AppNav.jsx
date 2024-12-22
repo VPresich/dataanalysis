@@ -19,10 +19,13 @@ export default function AppNav() {
         Analysts
       </NavLink> */}
       <NavLink className={classItem} to="/data">
-        Example Analysis
+        IMMAnalysis
       </NavLink>
       <NavLink className={classItem} to="/hough">
-        Hough Transform
+        Hough
+      </NavLink>
+      <NavLink className={classItem} to="/hough3d">
+        Hough3D
       </NavLink>
       {/* {isLoggedIn && (
         <NavLink className={classItem} to="/favorites">

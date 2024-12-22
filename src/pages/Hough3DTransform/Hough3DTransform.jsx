@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllHoughData } from "../../redux/houghdata/operations";
-import { setResult } from "../../redux/houghdata/slice";
+import { setResult3D } from "../../redux/houghdata/slice";
 import Loader from "../../components/UI/Loader/Loader";
 import clsx from "clsx";
-import HoughDataTable from "../../components/HoughDataTable/HoughDataTable";
+import Hough3DDataTable from "../../components/Hough3DDataTable/Hough3DDataTable";
 import ModalWrapper from "../../components/UI/ModalWrapper/ModalWrapper";
 import Button from "../../components/UI/Button/Button";
-import HoughTransformVisualizer from "../../components/HoughTransformVisualizer/HoughTransformVisualizer";
-import HoughTransformResult from "../../components/HoughTransformResult/HoughTransformResult";
+import HoughTransform3DVisualizer from "../../components/HoughTransform3DVisualizer/HoughTransform3DVisualizer";
+import HoughTransform3DResult from "../../components/HoughTransform3DResult/HoughTransform3DResult";
 import {
   selectHoughData,
   selectIsLoading,
@@ -16,8 +16,8 @@ import {
 } from "../../redux/houghdata/selectors";
 import { selectTheme } from "../../redux/auth/selectors";
 import DocumentTitle from "../../components/DocumentTitle";
-import houghTransform from "../../auxiliary/houghTransform";
-import css from "./HoughTransform.module.css";
+import hough3DTransform from "../../auxiliary/hough3DTransform";
+import css from "./Hough3DTransform.module.css";
 
 export default function HoughTransform() {
   const dispatch = useDispatch();
@@ -49,8 +49,8 @@ export default function HoughTransform() {
     dispatch(getAllHoughData())
       .unwrap()
       .then((data) => {
-        const result = houghTransform(data);
-        dispatch(setResult(result));
+        const result3D = hough3DTransform(data);
+        dispatch(setResult3D(result3D));
       })
       .catch((error) => {
         console.error("Error in get Hough Data:", error);
@@ -59,15 +59,15 @@ export default function HoughTransform() {
 
   return (
     <React.Fragment>
-      <DocumentTitle>Hough Transform</DocumentTitle>
+      <DocumentTitle>Hough 3DTransform</DocumentTitle>
       <section className={css.container}>
-        <h2 className="visually-hidden">Hough Transform</h2>
+        <h2 className="visually-hidden">Hough 3D Transform</h2>
         <div className={css.auxLine}>
           <Button btnAuxStyles={css.auxBtn} onClick={handleVisClick}>
-            Hough Visualization
+            Hough 3D Visualization
           </Button>
           <Button btnAuxStyles={css.auxBtn} onClick={handleResultClick}>
-            Hough Result
+            Hough 3D Result
           </Button>
         </div>
         <div className={css.tableContainer}>
@@ -76,7 +76,7 @@ export default function HoughTransform() {
           ) : (
             <React.Fragment>
               {!error && houghData.length > 0 ? (
-                <HoughDataTable data={houghData} />
+                <Hough3DDataTable data={houghData} />
               ) : (
                 <p className={clsx(css.text, css[theme])}>Not found data.</p>
               )}
@@ -86,12 +86,12 @@ export default function HoughTransform() {
       </section>
       {showVisGraph && (
         <ModalWrapper onClose={handleVizClose} isGraph={true}>
-          <HoughTransformVisualizer />
+          <HoughTransform3DVisualizer />
         </ModalWrapper>
       )}
       {showResultGraph && (
         <ModalWrapper onClose={handleResultClose} isGraph={true}>
-          <HoughTransformResult />
+          <HoughTransform3DResult />
         </ModalWrapper>
       )}
     </React.Fragment>

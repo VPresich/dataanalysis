@@ -17,9 +17,9 @@ import {
 import { selectTheme } from "../../redux/auth/selectors";
 import DocumentTitle from "../../components/DocumentTitle";
 import houghTransform from "../../auxiliary/houghTransform";
-import css from "./HoughTransform.module.css";
+import css from "./Hough2DTrajectory.module.css";
 
-export default function HoughTransform() {
+export default function Hough2DTrajectory() {
   const dispatch = useDispatch();
   const [showVisGraph, setShowVisGraph] = useState(false);
   const [showResultGraph, setShowResultGraph] = useState(false);

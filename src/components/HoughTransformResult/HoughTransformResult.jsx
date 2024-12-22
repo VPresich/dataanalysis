@@ -14,62 +14,47 @@ const HoughTransformResult = () => {
   const points = useSelector(selectHoughData);
   const chartRef = useRef(null);
 
-  const bestLine = result?.bestLine;
-  const rho = bestLine?.rho || 0;
-  const theta = bestLine?.theta || 0;
-
-  const renderPointsAndLine = () => {
+  const renderPointsAndLines = () => {
     if (!result) return null;
-    const { bestLine } = result;
-    if (!bestLine) return null;
-    const { rho, theta } = bestLine;
+    const { bestLines } = result;
+    if (!bestLines || bestLines.length === 0) return null;
 
     const minX = Math.min(...points.map(({ x }) => x));
     const maxX = Math.max(...points.map(({ x }) => x));
 
-    const thetaInRadians = (theta * Math.PI) / 180;
+    const lineDatasets = bestLines.map(({ rho, theta }, index) => {
+      const thetaInRadians = (theta * Math.PI) / 180;
 
-    const y1 =
-      (rho - minX * Math.cos(thetaInRadians)) / Math.sin(thetaInRadians);
-    const y2 =
-      (rho - maxX * Math.cos(thetaInRadians)) / Math.sin(thetaInRadians);
+      const y1 =
+        (rho - minX * Math.cos(thetaInRadians)) / Math.sin(thetaInRadians);
+      const y2 =
+        (rho - maxX * Math.cos(thetaInRadians)) / Math.sin(thetaInRadians);
 
-    const x0 = rho * Math.cos(thetaInRadians);
-    const y0 = rho * Math.sin(thetaInRadians);
+      return {
+        label: `Line ${index + 1} (Rho: ${rho}, Theta: ${theta})`,
+        data: [
+          { x: minX, y: y1 },
+          { x: maxX, y: y2 },
+        ],
+        borderColor: `rgba(${(index * 50) % 255}, ${(index * 80) % 255}, ${
+          (index * 120) % 255
+        }, 1)`,
+        borderWidth: 1,
+        fill: false,
+        showLine: true,
+        pointRadius: 0,
+      };
+    });
 
-    const lineData = {
-      labels: ["Detected Line"],
-      datasets: [
-        {
-          label: "Points",
-          data: points.map(({ x, y }) => ({ x, y })),
-          backgroundColor: "rgba(255, 99, 132, 0.5)",
-          pointRadius: 5,
-        },
-        {
-          label: "Detected Line",
-          data: [
-            { x: minX, y: y1 },
-            { x: maxX, y: y2 },
-          ],
-          borderColor: "rgba(0, 123, 255, 1)",
-          backgroundColor: "rgba(0, 123, 255, 1)",
-          borderWidth: 1,
-          fill: false,
-          showLine: true,
-        },
-        {
-          label: "Perpendicular Line",
-          data: [
-            { x: 0, y: 0 },
-            { x: x0, y: y0 },
-          ],
-          borderColor: "rgba(0, 255, 123, 1)",
-          backgroundColor: "rgba(0, 255, 123, 1)",
-          borderWidth: 1,
-          showLine: true,
-        },
-      ],
+    const pointDataset = {
+      label: "Points",
+      data: points.map(({ x, y }) => ({ x, y })),
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      pointRadius: 5,
+    };
+
+    const data = {
+      datasets: [pointDataset, ...lineDatasets],
     };
 
     const options = {
@@ -110,7 +95,7 @@ const HoughTransformResult = () => {
       },
     };
 
-    return <Scatter ref={chartRef} data={lineData} options={options} />;
+    return <Scatter ref={chartRef} data={data} options={options} />;
   };
 
   const resetZoom = () => {
@@ -122,13 +107,12 @@ const HoughTransformResult = () => {
   return (
     <React.Fragment>
       <div className={css.headLine}>
-        <h2>Points and Detected Line</h2>
-        <span>{`Rho: ${rho}, Theta: ${theta}`}</span>
+        <h2>Points and Detected Lines</h2>
         <Button onClick={resetZoom} btnAuxStyles={css.btnReset}>
           Reset zoom
         </Button>
       </div>
-      <div className={css.chartContainer}>{renderPointsAndLine()}</div>
+      <div className={css.chartContainer}>{renderPointsAndLines()}</div>
     </React.Fragment>
   );
 };

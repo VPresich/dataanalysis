@@ -8,10 +8,14 @@ const houghSlice = createSlice({
     isLoading: false,
     error: null,
     result: null,
+    result3d: null,
   },
   reducers: {
     setResult(state, action) {
       state.result = action.payload;
+    },
+    setResult3D(state, action) {
+      state.result3d = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -33,4 +37,4 @@ const houghSlice = createSlice({
 });
 
 export default houghSlice.reducer;
-export const { setResult } = houghSlice.actions;
+export const { setResult, setResult3D } = houghSlice.actions;
