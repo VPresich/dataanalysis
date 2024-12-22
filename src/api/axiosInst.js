@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const BaseURL = "http://localhost:8080/api/";
-// export const BaseURL = "https://teachers-rest-api.onrender.com/api/";
+//export const BaseURL = "http://localhost:8080/api/";
+export const BaseURL = "https://teachers-rest-api.onrender.com/api/";
 export const axiosInst = axios.create({
   baseURL: BaseURL,
 });
