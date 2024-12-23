@@ -1,0 +1,26 @@
+.chart-container {
+  width: auto;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.btnReset {
+  width: 145px;
+  height: 48px;
+}
+
+.headLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.trajectoryParams {
+  display: flex;
+  gap: 8px;
+}
+
+.trajectoryParams {
+  width: 150px;
+}

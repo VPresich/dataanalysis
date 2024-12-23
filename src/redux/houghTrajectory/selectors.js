@@ -1,4 +1,4 @@
-export const selectTrajectoryData = (state) => state.hough.items;
-export const selectIsLoading = (state) => state.hough.isLoading;
-export const selectError = (state) => state.hough.error;
-export const selectTrajectory = (state) => state.hough.result;
+export const selectTrajectoryData = (state) => state.houghtrack.items;
+export const selectIsLoading = (state) => state.houghtrack.isLoading;
+export const selectError = (state) => state.houghtrack.error;
+export const selectTrajectory = (state) => state.houghtrack.result;

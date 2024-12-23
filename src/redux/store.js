@@ -29,7 +29,7 @@ const store = configureStore({
     analysis: analysisReducer,
     datafilters: dataFiltersReducer,
     hough: houghReducer,
-    houghTrajectory: houghTrajectoryReducer,
+    houghtrack: houghTrajectoryReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

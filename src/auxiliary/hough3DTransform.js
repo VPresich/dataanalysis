@@ -22,7 +22,7 @@ const hough3DTransform = (
   let maxVal = 0;
 
   for (const { x, y, t } of points) {
-    const pointSurface = [];
+    const pointsSurface = [];
 
     for (let thetaIndex = 0; thetaIndex < thetaSteps; thetaIndex++) {
       const theta = thetaIndex * thetaRes;
@@ -44,7 +44,7 @@ const hough3DTransform = (
             accumulator[thetaIndex][phiIndex][rhoIndex]
           );
 
-          pointSurface.push({
+          pointsSurface.push({
             theta: (theta * 180) / Math.PI,
             phi: (phi * 180) / Math.PI,
             rho,
@@ -52,7 +52,7 @@ const hough3DTransform = (
         }
       }
     }
-    surfaces.push({ point: { x, y, t }, surface: pointSurface });
+    surfaces.push({ point: { x, y, t }, surface: pointsSurface });
   }
 
   const threshold = maxVal * 0.8;

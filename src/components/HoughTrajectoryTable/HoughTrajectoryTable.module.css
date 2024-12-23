@@ -1,0 +1,94 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 4px;
+  height: 40px;
+}
+
+.th {
+  color: var(--white);
+  background-color: var(--default);
+  border: 1px solid #dddddd;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.tr {
+  background-color: var(--default-accent);
+}
+
+.tr:hover {
+  background-color: var(--default);
+  cursor: pointer;
+}
+
+.tr.red {
+  background-color: var(--red-accent);
+}
+
+.tr.green {
+  background-color: var(--green-accent);
+}
+
+.tr.blue {
+  background-color: var(--blue-accent);
+}
+
+.tr.pink {
+  background-color: var(--pink-accent);
+}
+
+.tr.yellow {
+  background-color: var(--yellow-accent);
+}
+
+.th.yellow {
+  background-color: var(--yellow);
+}
+
+.th.green {
+  background-color: var(--green);
+}
+
+.th.blue {
+  background-color: var(--blue);
+}
+
+.th.pink {
+  background-color: var(--pink);
+}
+
+.th.red {
+  background-color: var(--red);
+}
+
+.tr.red:hover {
+  background-color: var(--red);
+}
+
+.tr.green:hover {
+  background-color: var(--green);
+}
+
+.tr.blue:hover {
+  background-color: var(--blue);
+}
+
+.tr.pink:hover {
+  background-color: var(--pink);
+}
+
+.tr.yellow:hover {
+  background-color: var(--yellow);
+}
+
+.tbody .tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

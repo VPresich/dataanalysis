@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getHoughTrajectoryData } from "./operations";
 
 const houghTrajectorySlice = createSlice({
-  name: "houghTrajectory",
+  name: "houghtrack",
   initialState: {
     items: [],
     isLoading: false,
@@ -10,11 +10,11 @@ const houghTrajectorySlice = createSlice({
     result: null,
   },
   reducers: {
-    setTrajectory(state, action) {
+    setHoughTrajectory(state, action) {
       state.result = action.payload;
     },
     setTrajectoryData(state, action) {
-      state.result = action.payload;
+      state.items = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -26,6 +26,7 @@ const houghTrajectorySlice = createSlice({
       .addCase(getHoughTrajectoryData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        console.log("action.payload", action.payload);
         state.items = action.payload;
       })
       .addCase(getHoughTrajectoryData.rejected, (state, action) => {
@@ -36,5 +37,5 @@ const houghTrajectorySlice = createSlice({
 });
 
 export default houghTrajectorySlice.reducer;
-export const { setTrajectoryData, setTrajectory } =
+export const { setTrajectoryData, setHoughTrajectory } =
   houghTrajectorySlice.actions;
