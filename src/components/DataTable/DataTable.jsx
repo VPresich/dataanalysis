@@ -3,12 +3,25 @@ import { useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
 import css from "./DataTable.module.css";
 
+const optionalColumns = [
+  { key: "Kde", label: "Kde" },
+  { key: "KdeWeighted", label: "KdeWeighted" },
+  { key: "Gaussian", label: "Gaussian" },
+  { key: "GaussianWeighted", label: "GaussianWeighted" },
+  { key: "EvaluationNum", label: "EvaluationNum" },
+];
+
 const DataTable = ({ data }) => {
   const theme = useSelector(selectTheme);
   if (!Array.isArray(data)) {
     console.error("Expected data to be an array, but got:", data);
     return <p>No data available</p>;
   }
+
+  const availableOptionalColumns = optionalColumns.filter(({ key }) =>
+    data.some((item) => key in item)
+  );
+
   return (
     <table className={css.table}>
       <thead>
@@ -30,6 +43,12 @@ const DataTable = ({ data }) => {
           <th className={clsx(css.th, css[theme])}>Probability</th>
           <th className={clsx(css.th, css[theme])}>Track</th>
           <th className={clsx(css.th, css[theme])}>Time</th>
+
+          {availableOptionalColumns.map(({ key, label }) => (
+            <th key={key} className={clsx(css.th, css[theme])}>
+              {label}
+            </th>
+          ))}
         </tr>
       </thead>
       <tbody className={css.tbody}>
@@ -52,6 +71,12 @@ const DataTable = ({ data }) => {
             <td className={css.td}>{item.probability}</td>
             <td className={css.td}>{item.TrackNum}</td>
             <td className={css.td}>{item.Time}</td>
+
+            {availableOptionalColumns.map(({ key }) => (
+              <td key={key} className={css.td}>
+                {item[key]}
+              </td>
+            ))}
           </tr>
         ))}
       </tbody>

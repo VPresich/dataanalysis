@@ -13,6 +13,34 @@ const getCSSVariableValue = (variableName) => {
   );
 };
 
+const optionalTooltipFields = [
+  {
+    key: "Kde",
+    label: "Kde",
+    format: (val) => (val !== "None" ? parseFloat(val).toFixed(2) : val),
+  },
+  {
+    key: "KdeWeighted",
+    label: "KdeWeighted",
+    format: (val) => (val !== "None" ? parseFloat(val).toFixed(2) : val),
+  },
+  {
+    key: "Gaussian",
+    label: "Gaussian",
+    format: (val) => (val !== "None" ? parseFloat(val).toFixed(2) : val),
+  },
+  {
+    key: "GaussianWeighted",
+    label: "GaussianWeighted",
+    format: (val) => (val !== "None" ? parseFloat(val).toFixed(2) : val),
+  },
+  {
+    key: "EvaluationNum",
+    label: "EvaluationNum",
+    format: (val) => (val !== "None" ? parseInt(val, 10) : val),
+  },
+];
+
 const LineGraph = ({ data }) => {
   const chartRef = useRef(null);
   if (!Array.isArray(data) || data.length === 0) {
@@ -74,7 +102,8 @@ const LineGraph = ({ data }) => {
             const trackNum = tooltipItem.dataset.label;
             const trackData = groupedData[trackNum.replace("Track ", "")];
             const rowData = trackData[index];
-            return [
+
+            const lines = [
               `Y: ${tooltipItem.raw.y}`,
               `Z: ${parseFloat(rowData.Z).toFixed(2)}`,
               `Probability: ${parseFloat(rowData.probability).toFixed(5)}`,
@@ -91,6 +120,17 @@ const LineGraph = ({ data }) => {
                   : rowData.IMMconsistentValue
               }`,
             ];
+
+            optionalTooltipFields.forEach(({ key, label, format }) => {
+              if (key in rowData) {
+                const raw = rowData[key];
+                const formatted =
+                  typeof format === "function" ? format(raw) : raw;
+                lines.push(`${label}: ${formatted}`);
+              }
+            });
+
+            return lines;
           },
         },
       },
