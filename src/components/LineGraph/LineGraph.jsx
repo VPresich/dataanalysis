@@ -39,6 +39,16 @@ const optionalTooltipFields = [
     label: "EvaluationNum",
     format: (val) => (val !== "None" ? parseInt(val, 10) : val),
   },
+  {
+    key: "TrackConsistent",
+    label: "TrackConsistent",
+    format: (val) => val,
+  },
+  {
+    key: "VelocityConsistent",
+    label: "VelocityConsistent",
+    format: (val) => val,
+  },
 ];
 
 const LineGraph = ({ data }) => {
@@ -74,8 +84,9 @@ const LineGraph = ({ data }) => {
         })),
         fill: false,
         borderColor: lineColor || "rgba(75, 192, 192, 1)",
-        pointBackgroundColor: trackData.map((row) =>
-          getPointColor(row.IMMconsistent)
+        pointBackgroundColor: trackData.map((row) => getPointColor(row)),
+        pointRadius: trackData.map((row) =>
+          row.IMMconsistent === "0" ? 4 : 3
         ),
         tension: 0.1,
       };

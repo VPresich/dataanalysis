@@ -9,6 +9,8 @@ const optionalColumns = [
   { key: "Gaussian", label: "Gaussian" },
   { key: "GaussianWeighted", label: "GaussianWeighted" },
   { key: "EvaluationNum", label: "EvaluationNum" },
+  { key: "TrackConsistent", label: "TrackConsistent" },
+  { key: "VelocityConsistent", label: "VelocityConsistent" },
 ];
 
 const DataTable = ({ data }) => {
